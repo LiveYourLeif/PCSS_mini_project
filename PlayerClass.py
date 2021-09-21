@@ -26,3 +26,4 @@ class Player(Stats):
             playerChoice = int(input(f"Choose your class, with either the number 1, 2 or 3 : "))
 
 
+#
