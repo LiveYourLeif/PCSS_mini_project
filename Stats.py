@@ -1,18 +1,52 @@
-import random
-import numpy as np
-from abc import ABC, abstractmethod
+class HP:
+    def __init__(self, HP = 0):
+        self._HP = HP
 
-#Interface for the stats
-class Stats(ABC):
-    @abstractmethod
-    def hitpoints(self) -> int:
-        pass
+    def get_HP(self):
+        return self._HP
 
-    def strength(self) -> int:
-        pass
-    
-    def defense(self) -> int:
-        pass
+    def set_HP(self, x):
+        self._HP = x
 
-    def magic(self) -> int:
-        pass
+class Strength:
+    def __init__(self, strength = 0):
+        self._strength = strength
+
+    def get_strength(self):
+        return self._strength
+
+    def set_strength(self, x):
+        self._strength = x
+
+
+class Defence:
+    def __init__(self, defence = 0):
+        self._defence = defence
+
+    def get_defence(self):
+        return self._defence
+
+    def set_defence(self, x):
+        self._defence = x
+
+class Magic:
+    def __init__(self, magic = 0):
+        self._magic = magic
+
+    def get_magic(self):
+        return self._magic
+
+    def set_magic(self, x):
+        self._magic = x
+
+class Sex_Appeal:
+    def __init__(self, nice = 0):
+        self._nice = nice
+
+    def get_nice(self):
+        return self._nice
+
+    def set_nice(self, x):
+        self._nice = x
+
+#string(iLikeYourCutG) = "smack"
