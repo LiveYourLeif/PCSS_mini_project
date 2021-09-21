@@ -9,7 +9,7 @@ class Player(Stats):
                         f"\nThe Warrior has high defense and a powerful attack, but is very weak to magic"
                         f"\nThe Mage has overly superior magic powers, but is weak to regular hits from enemies"
                         f"\nThe Wild Card has random stats! Roll the dice and prepare your numpys")
-    playerClass = input(f"Choose your class, with either the number 1, 2 or 3")
+    playerChoice = int(input(f"Choose your class, with either the number 1, 2 or 3 : "))
 
     while 1:
         if playerChoice == 1:
