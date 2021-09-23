@@ -1,4 +1,4 @@
-import ClassStats
+import ClassStats 
 
 
 class Player(ClassStats):
@@ -11,16 +11,12 @@ class Player(ClassStats):
                         f"\nThe Wild Card has random stats! Roll the dice and prepare your numpys")
     playerChoice = int(input(f"Choose your class, with either the number 1, 2 or 3 : "))
 
-    def get_playerChoice(self):
-        return self._playerChoice
-
-
     while 1:
         if playerChoice == 1:
             print(f"\nYou have chosen the warrior, great choice {playerName}, get ready for an exciting adventure!")
-            warrior = ClassStats.ClassType(50, 7, 10, 5, 10, 0, 2)
-            print(f"Your health is: {warrior.health}\n"
-                  f"Your strength is: {warrior.get_}\n"
+            warrior = ClassStats.ClassType(50, 7, 10, 5, 10, 0, 2) # Creates object for the class Warrior
+            print(f"Your health is: {warrior.classHP()}\n"
+                  f"Your strength is: {warrior.classStrength()}\n"
                   f"Your defence is: {warrior.classDefence()}\n"
                   f"Your magic is: {warrior.classMagic()}")
             break
