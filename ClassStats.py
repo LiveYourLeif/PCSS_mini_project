@@ -32,9 +32,11 @@ class ClassType:
 
     def classDefence(self):
         defence = Stats.Defence()
-        defence.set_defence(random.randint(defenceL,defenceU))
+        defence.set_defence(random.randint(self.defenceL, self.defenceU))
+        return defence.get_defence()
 
     def classMagic(self):
         magic = Stats.Magic()
-        magic.set_magic(random.randint(magicL, magicU))
+        magic.set_magic(random.randint(self.magicL, self.magicU))
+        return magic.get_magic()
 
