@@ -22,13 +22,13 @@ class ClassType:
 
     def classHP(self):
         hitPoints = Stats.HP()
-        hitPoints.set_HP(health)
+        hitPoints.set_HP(self.health)
+        return hitPoints.get_HP()
 
     def classStrength(self):
         strength = Stats.Strength()
-        strength.set_strength(random.randint(strengthL, strengthU))
+        strength.set_strength(random.randint(self.strengthL, self.strengthU))
         return strength.get_strength()
-
 
     def classDefence(self):
         defence = Stats.Defence()
