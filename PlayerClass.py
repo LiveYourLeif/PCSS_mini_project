@@ -16,7 +16,7 @@ class Player(ClassStats):
         if playerChoice == 1:
             print(f"\nYou have chosen the warrior, great choice {playerName}, get ready for an exciting adventure!")
             warrior = ClassStats.ClassType(50, 7, 10, 5, 10, 0, 2)
-            print(f"Your health is: {warrior.classHP()}\n"
+            print(f"Your health is: {warrior.health}\n"
                   f"Your strength is: {warrior.classStrength()}\n"
                   f"Your defence is: {warrior.classDefence()}\n"
                   f"Your magic is: {warrior.classMagic()}")
