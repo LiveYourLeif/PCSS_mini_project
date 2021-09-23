@@ -1,4 +1,4 @@
-import ClassStats 
+import ClassStats
 
 
 class Player(ClassStats):
