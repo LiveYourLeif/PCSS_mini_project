@@ -12,6 +12,10 @@ class Player(ClassStats):
                         f"\nThe Wild Card has random stats! Roll the dice and prepare your numpys")
     playerChoice = int(input(f"Choose your class, with either the number 1, 2 or 3 : "))
 
+    def get_playerChoice(self):
+        return self._playerChoice
+
+
     while 1:
         if playerChoice == 1:
             print(f"\nYou have chosen the warrior, great choice {playerName}, get ready for an exciting adventure!")

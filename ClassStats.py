@@ -1,13 +1,14 @@
 import random
 import Stats
 
-health = 5
+health = 0
 strengthL = 0
 strengthU = 0
 defenceL = 0
 defenceU = 0
 magicL = 0
 magicU = 0
+
 
 class ClassType:
     def __init__(self, h, sl, su, dl, du, ml, mu):
