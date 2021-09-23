@@ -49,4 +49,3 @@ class Sex_Appeal:
     def set_nice(self, x):
         self._nice = x
 
-#string(iLikeYourCutG) = "smack"

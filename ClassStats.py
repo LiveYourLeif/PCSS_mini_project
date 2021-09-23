@@ -9,55 +9,34 @@ defenceU = 0
 magicL = 0
 magicU = 0
 
-class Warrior:
-    hpWarrior = Stats.HP()
-    hpWarrior.set_HP(50)
-    print(f"HP: {hpWarrior.get_HP()}")
+class ClassType:
+    def __init__(self, h, sl, su, dl, du, ml, mu):
+        self.health = h
+        self.strengthL = sl
+        self.strengthU = su
+        self.defenceL = dl
+        self.defenceU = du
+        self.magicL = ml
+        self.magicU = mu
 
-    strengthWarrior = Stats.Strength()
-    strengthWarrior.set_strength(random.randint(6, 8))
-    print(f"Strength: {strengthWarrior.get_strength()}")
-
-    defenceWarrior = Stats.Defence()
-    defenceWarrior.set_defence(random.randint(8,10))
-    print(f"Defence: {defenceWarrior.get_defence()}")
-
-    magicWarrior = Stats.Magic()
-    magicWarrior.set_magic(0)
-    print(f"Magic: {magicWarrior.get_magic()}")
+    def classHP(self):
+        hitPoints = Stats.HP()
+        hitPoints.set_HP(health)
 
 
-class Mage:
-    hpMage = Stats.HP()
-    hpMage.set_HP(50)
-    print(f"HP: {hpMage.get_HP()}")
 
-    strengthMage = Stats.Strength()
-    strengthMage.set_strength(random.randint(1, 3))
-    print(f"Strength: {strengthMage.get_strength()}")
+    def classStrength(self):
+        strength = Stats.Strength()
+        strength.set_strength(random.randint(strengthL, strengthU))
+        return strength.get_strength()
 
-    defenceMage = Stats.Defence()
-    defenceMage.set_defence(random.randint(1, 3))
-    print(f"Defence: {defenceMage.get_defence()}")
 
-    magicMage = Stats.Magic()
-    magicMage.set_magic(random.randint(8, 10))
-    print(f"Magic: {magicMage.get_magic()}")
+    def classDefence(self):
+        defence = Stats.Defence()
+        defence.set_defence(random.randint(defenceL,defenceU))
 
-class Wildcard:
-    hpWildCard = Stats.HP()
-    hpWildCard.set_HP(50)
-    print(f"HP: {hpWildCard.get_HP()}")
+    def classMagic(self):
+        magic = Stats.Magic()
+        magic.set_magic(random.randint(magicL, magicU))
 
-    strengthWildCard = Stats.Strength()
-    strengthWildCard.set_strength(random.randint(0,10))
-    print(f"Strength: {strengthWildCard.get_strength()}")
-
-    defenceWildCard = Stats.Defence()
-    defenceWildCard.set_defence(random.randint(0,10))
-    print(f"Defence: {defenceWildCard.get_defence()}")
-
-    magicWildCard = Stats.Magic()
-    magicWildCard.set_magic(random.randint(0, 10))
-    print(f"Magic: {magicWildCard.get_magic()}")
 

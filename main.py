@@ -1,5 +1,9 @@
-import PlayerClass as player
+
+def main():
+
+
+if (__name__ == "__main__"):
+        main()
 
 #user = player()
 
-#oh no
