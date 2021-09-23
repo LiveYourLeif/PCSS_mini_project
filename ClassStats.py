@@ -1,6 +1,13 @@
 import random
 import Stats
 
+health = 5
+strengthL = 0
+strengthU = 0
+defenceL = 0
+defenceU = 0
+magicL = 0
+magicU = 0
 
 class Warrior:
     hpWarrior = Stats.HP()
