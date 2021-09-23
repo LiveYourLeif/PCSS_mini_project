@@ -5,7 +5,6 @@ class Player(ClassStats):
     playerName = input("Choose your name, wanderer! ")
     print(f"Hello {playerName}!")
 
-
     print(f"Which class do you want to be? \n1 = Warrior. 2 = Mage. 3 = Wildcard"
                         f"\nThe Warrior has high defense and a powerful attack, but is very weak to magic"
                         f"\nThe Mage has overly superior magic powers, but is weak to regular hits from enemies"
@@ -27,7 +26,11 @@ class Player(ClassStats):
             break
         elif playerChoice == 2:
             print(f"\nYou have chosen the mage, great choice {playerName}, get ready for an exciting adventure!")
-
+            mage = ClassStats.ClassType(50, 3, 6, 3, 5, 8, 10) # Creates object for the class Mage
+            print(f"Your health is: {mage.classHP()}\n"
+                  f"Your strength is: {mage.classStrength()}\n"
+                  f"Your defence is: {mage.classDefence()}\n"
+                  f"Your magic is: {mage.classMagic()}")
             break
         elif playerChoice == 3:
             print(f"\nYou have chosen the wild card, brave choice {playerName}, get ready for an exciting adventure!")

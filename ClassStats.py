@@ -24,8 +24,6 @@ class ClassType:
         hitPoints = Stats.HP()
         hitPoints.set_HP(health)
 
-
-
     def classStrength(self):
         strength = Stats.Strength()
         strength.set_strength(random.randint(strengthL, strengthU))
@@ -39,5 +37,4 @@ class ClassType:
     def classMagic(self):
         magic = Stats.Magic()
         magic.set_magic(random.randint(magicL, magicU))
-
 

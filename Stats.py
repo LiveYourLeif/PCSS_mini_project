@@ -8,6 +8,7 @@ class HP:
     def set_HP(self, x):
         self._HP = x
 
+
 class Strength:
     def __init__(self, strength = 0):
         self._strength = strength
@@ -29,6 +30,7 @@ class Defence:
     def set_defence(self, x):
         self._defence = x
 
+
 class Magic:
     def __init__(self, magic = 0):
         self._magic = magic
@@ -39,6 +41,7 @@ class Magic:
     def set_magic(self, x):
         self._magic = x
 
+
 class Sex_Appeal:
     def __init__(self, nice = 0):
         self._nice = nice
@@ -48,4 +51,3 @@ class Sex_Appeal:
 
     def set_nice(self, x):
         self._nice = x
-
