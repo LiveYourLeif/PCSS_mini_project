@@ -41,13 +41,3 @@ class Magic:
     def set_magic(self, x):
         self._magic = x
 
-
-class Sex_Appeal:
-    def __init__(self, nice = 0):
-        self._nice = nice
-
-    def get_nice(self):
-        return self._nice
-
-    def set_nice(self, x):
-        self._nice = x
