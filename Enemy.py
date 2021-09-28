@@ -18,5 +18,3 @@ class EnemyType(ClassStats.ClassType):
     def chooseName(self):
         return random.choice(name)
 
-
-
