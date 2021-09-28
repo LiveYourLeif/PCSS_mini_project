@@ -1,7 +1,7 @@
 import ClassStats
 
 
-class Player(ClassStats):
+class Player(ClassStats.ClassType):
     playerName = input("Choose your name, wanderer! ")
     print(f"Hello {playerName}!")
 
