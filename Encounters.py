@@ -3,7 +3,11 @@ import Enemy
 
 class Encounter(Enemy.EnemyType):
 
-    def dialogs(self):
+    def story(self):
+        print("")
+        print("Your task is to defeat the legendary enemy who is threatening the kingdom.\n "
+              "You wander out into the wilderness. ")
+    def battle(self):
         enemyName = Enemy.EnemyType.chooseName(0)
         firstEnemy = Enemy.EnemyType(10, 1, 3, 1, 3, 1, 3)
         print(f"A {enemyName} approaches!")

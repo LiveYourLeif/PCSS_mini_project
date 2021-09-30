@@ -1,4 +1,5 @@
-import PlayerClass
+import Encounters
+
 
 def main():
     PlayerClass.Player()
