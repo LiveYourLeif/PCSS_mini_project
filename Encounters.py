@@ -1,4 +1,5 @@
 import Enemy
+import PlayerClass
 
 
 class Encounter(Enemy.EnemyType):
