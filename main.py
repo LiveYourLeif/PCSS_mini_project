@@ -2,7 +2,8 @@ import Encounters
 
 
 def main():
-    PlayerClass.Player()
+   play = Encounters.Encounter()
+
 
 
 if __name__ == "__main__":
