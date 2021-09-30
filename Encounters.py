@@ -30,13 +30,12 @@ class Encounter(Enemy.EnemyType):
                 break
             else:
                 print(f"Action not valid.")
+                break
 
 
     #def fight(self):
 
-
-
-
-test = Encounter
-test.dialogs(0)
+run = Encounter
+run.story(0)
+run.battle(0)
 
