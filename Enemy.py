@@ -1,8 +1,6 @@
 import random
 import ClassStats
 
-name = ["Goblin", "Troll", "Blob", "Skeleton", "Dragon", "Bonko Tossen", "Draugr", "Whitehead"]
-
 
 class EnemyType(ClassStats.ClassType):
     def __init__(self, n,  h, sl, su, dl, du, ml, mu):

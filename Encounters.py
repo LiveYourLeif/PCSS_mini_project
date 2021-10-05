@@ -26,14 +26,21 @@ class Encounter(Enemy.EnemyType):
                     break
                 elif (playerAction == "Magic"):
 
-                print(f"You charge your big fucking lazer! Where the fuck did you even get it.")
-                break
-            elif (playerAction == "Items"):
-                print(f"You open your sack of items, and then it shows the items or something idk")
-                break
-            else:
-                print(f"Action not valid.")
-                break
+                    print(f"You ready your stance and cast a thunderous magic spell!")
+                    break
+                elif (playerAction == "Items"):
+                    print(f"Inside your pouch, you find plenty of helpful items, such as:")
+                    break
+                elif (playerAction == "BattleHelp"):
+                    print(f"List of commands in battle:")
+                    print(f"'Attack' - Deal physical damage to the enemy")
+                    print(f"'Magic' - Deal magical damange to the enemy")
+                    print(f"'Items' - Use an item, if you have one")
+                    break
+                else:
+                    print(f"Action not valid. Type 'BattleHelp' for list of actions.")
+                    playerChoice = input(f"It is your turn! What do you want to do? (Type an action): ")
+                    break
 
 
 run = Encounter
