@@ -32,7 +32,7 @@ class Player(ClassStats.ClassType): # Player class som extender classType
             break
         elif playerChoice == 3:
             print(f"\nYou have chosen the wild card, brave choice {playerName}, get ready for an exciting adventure!")
-            wildcard = ClassStats.ClassType(50, 1, 10, 1, 10, 1, 10) # Creates object for the class Wilcard
+            wildcard = ClassStats.ClassType(50, 1, 10, 1, 10, 1, 10) # Creates object for the class Wildcard
             print(f"Your health is: {wildcard.classHP()}\n"
                   f"Your strength is: {wildcard.classStrength()}\n"
                   f"Your defence is: {wildcard.classDefence()}\n"
