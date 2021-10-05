@@ -10,12 +10,17 @@ class Encounter(Enemy.EnemyType):
               "You wander out into the wilderness. ")
 
     def battle(self):
-        currentEnemy = Enemy.EnemyType(0, 10, 1, 3, 1, 3, 1, 3)
-        print(f"A {currentEnemy.className()} approaches!")
-        print(f"{currentEnemy.className()} health: {currentEnemy.classHP()}\n"
-              f"{currentEnemy.className()} strength: {currentEnemy.classStrength()}\n"
-              f"{currentEnemy.className()} defence: {currentEnemy.classDefence()}\n"
-              f"{currentEnemy.className()} magic: {currentEnemy.classMagic()}")
+
+        enemylist = []
+        for i in range(10):
+            currentEnemy = Enemy.EnemyType(0, 10, 1, 3, 1, 3, 1, 3)
+            enemylist.append(currentEnemy)
+
+
+        for currentEnemy in enemylist:
+            print(f"{currentEnemy.className()}")
+
+        print(f"A {currentEnemy} approaches!")
 
 
         #while(Enemy.classHP > 0):

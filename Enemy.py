@@ -18,3 +18,6 @@ class EnemyType(ClassStats.ClassType):
                      "Werewolf"]
         return random.choice(enemyName)
 
+
+
+
