@@ -20,4 +20,3 @@ class EnemyType(ClassStats.ClassType):
 
 
 
-
