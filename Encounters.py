@@ -20,7 +20,9 @@ class Encounter():
         newEnemy = enemylist.pop(0)
 
         # Print the name of the new enemy
-        print(f"A {newEnemy.className()} approaches!")
+        firstEnemyName = newEnemy.className()
+        firstEnemyHP = newEnemy.classHP()
+        print(f"A {firstEnemyName} approaches!")
 
 
         playerAction = int(input(f"It is your turn! What do you want to do?"))
@@ -28,7 +30,9 @@ class Encounter():
                 if playerAction == 1:
                     if PlayerClass.Player.playerChoice == 1:
                         print(f"You swing at the enemy with your sword!")
-                        print(f"you damaged the {newEnemy.className()} {PlayerClass.Player.warrior.classStrength()} damage")
+                        print(f"you dealt {PlayerClass.Player.warrior.classStrength()} damage to the {firstEnemyName}")
+                        print(f"current enemy health: {firstEnemyHP - PlayerClass.Player.warrior.classStrength()}")
+
 
                     break
                 elif (playerAction == "Magic"):
