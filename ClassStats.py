@@ -40,3 +40,5 @@ class ClassType:
         magic.set_magic(random.randint(self.magicL, self.magicU))
         return magic.get_magic()
 
+
+

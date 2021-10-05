@@ -6,7 +6,8 @@ name = ["Goblin", "Troll", "Blob", "Skeleton", "Dragon", "Bonko Tossen", "Draugr
 
 
 class EnemyType(ClassStats.ClassType):
-    def __init__(self, h, sl, su, dl, du, ml, mu):
+    def __init__(self, n,  h, sl, su, dl, du, ml, mu):
+        self.name = n
         self.health = h
         self.strengthL = sl
         self.strengthU = su
@@ -15,6 +16,8 @@ class EnemyType(ClassStats.ClassType):
         self.magicL = ml
         self.magicU = mu
 
-    def chooseName(self):
-        return random.choice(name)
+    def className(self):
+        enemyName = ["Goblin", "Troll", "Blob", "Skeleton", "Reanimated Knight", "Bonko Tossen", "Draugr", "Ligma",
+                     "Werewolf"]
+        return random.choice(enemyName)
 

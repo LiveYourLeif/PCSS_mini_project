@@ -40,4 +40,3 @@ class Magic:
 
     def set_magic(self, x):
         self._magic = x
-
