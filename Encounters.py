@@ -6,7 +6,7 @@ class Encounter(Enemy.EnemyType):
 
     def story(self):
         print("")
-        print("Your task is to defeat the legendary enemy who is threatening the kingdom.\n "
+        print("Your task is to defeat the legendary enemy who is threatening the kingdom.\n"
               "You wander out into the wilderness. ")
 
     def battle(self):
@@ -23,7 +23,6 @@ class Encounter(Enemy.EnemyType):
         print(f"A {currentEnemy} approaches!")
 
 
-        #while(Enemy.classHP > 0):
         playerAction = input(f"It is your turn! What do you want to do? (Type an action): ")
         while 1:
                 if (playerAction == "Attack"):
@@ -46,7 +45,6 @@ class Encounter(Enemy.EnemyType):
                     print(f"Action not valid. Type 'BattleHelp' for list of actions.")
                     playerChoice = input(f"It is your turn! What do you want to do? (Type an action): ")
                     break
-
 
 run = Encounter
 run.story(0)
