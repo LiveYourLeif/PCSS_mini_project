@@ -41,7 +41,7 @@ class Encounter():
                 elif (playerAction == "BattleHelp"):
                     print(f"List of commands in battle:")
                     print(f"'Attack' - Deal physical damage to the enemy")
-                    print(f"'Magic' - Deal magical damange to the enemy")
+                    print(f"'Magic' - Deal magical damage to the enemy")
                     print(f"'Items' - Use an item, if you have one")
                     break
                 else:
