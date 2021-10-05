@@ -1,4 +1,3 @@
-import Stats
 import random
 import ClassStats
 
