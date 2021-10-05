@@ -2,7 +2,7 @@ import Enemy
 import PlayerClass
 
 
-class Encounter(Enemy.EnemyType):
+class Encounter():
 
     def story(self):
         print("")
@@ -10,23 +10,26 @@ class Encounter(Enemy.EnemyType):
               "You wander out into the wilderness. ")
 
     def battle(self):
-
-        enemylist = []
+        # Make a list with 10 objects called enemyList
         for i in range(10):
+            enemylist = []
             currentEnemy = Enemy.EnemyType(0, 10, 1, 3, 1, 3, 1, 3)
             enemylist.append(currentEnemy)
 
+        # Pop the first element of enemyList and make it a new enemy
+        newEnemy = enemylist.pop(0)
 
-        for currentEnemy in enemylist:
-            print(f"{currentEnemy.className()}")
-
-        print(f"A {currentEnemy} approaches!")
+        # Print the name of the new enemy
+        print(f"A {newEnemy.className()} approaches!")
 
 
-        playerAction = input(f"It is your turn! What do you want to do? (Type an action): ")
+        playerAction = int(input(f"It is your turn! What do you want to do?"))
         while 1:
-                if (playerAction == "Attack"):
-                    print(f"You swing at the enemy with your sword!")
+                if playerAction == 1:
+                    if PlayerClass.Player.playerChoice == 1:
+                        print(f"You swing at the enemy with your sword!")
+                        print(f"you damaged the {newEnemy.className()} {PlayerClass.Player.warrior.classStrength()} damage")
+
                     break
                 elif (playerAction == "Magic"):
 
@@ -45,6 +48,7 @@ class Encounter(Enemy.EnemyType):
                     print(f"Action not valid. Type 'BattleHelp' for list of actions.")
                     playerChoice = input(f"It is your turn! What do you want to do? (Type an action): ")
                     break
+
 
 run = Encounter
 run.story(0)
