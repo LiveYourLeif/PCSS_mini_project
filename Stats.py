@@ -1,3 +1,5 @@
+# Hele denne fil indeholder getters og setters for characternes attributer fx. HP og strength.
+
 class HP:
     def __init__(self, HP = 0):
         self._HP = HP

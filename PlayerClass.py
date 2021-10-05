@@ -1,16 +1,18 @@
 import ClassStats
 
 
-class Player(ClassStats.ClassType):
+class Player(ClassStats.ClassType): # Player class som extender classType
     playerName = input("Choose your name, wanderer! ")
     print(f"Hello {playerName}!")
-
+    # Første dialog hvor spilleren bliver præsenteret for de forskellige class typer i "spillet".
     print(f"Which class do you want to be? \n1 = Warrior. 2 = Mage. 3 = Wildcard"
                         f"\nThe Warrior has high defense and a powerful attack, but is very weak to magic"
                         f"\nThe Mage has overly superior magic powers, but is weak to regular hits from enemies"
                         f"\nThe Wild Card has random stats! Roll the dice and prepare your numpys")
     playerChoice = int(input(f"Choose your class, with either the number 1, 2 or 3 : "))
 
+    # While-loop hvor brugeren bliver bedt om at vælge hvilken class de ønsker at spille. Derudover bliver der efter
+    # brugerens valg lavet et objekt af den type, som brugeren vælger at spille og dets attributer.
     while 1:
         if playerChoice == 1:
             print(f"\nYou have chosen the warrior, great choice {playerName}, get ready for an exciting adventure!")

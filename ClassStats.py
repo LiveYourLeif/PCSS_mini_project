@@ -9,7 +9,7 @@ defenceU = 0
 magicL = 0
 magicU = 0
 
-
+# ClassType indeholder methods for at få de forskellige values til characters i spillet.
 class ClassType:
     def __init__(self, h, sl, su, dl, du, ml, mu):
         self.health = h
