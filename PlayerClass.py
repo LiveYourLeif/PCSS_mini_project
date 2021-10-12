@@ -3,7 +3,7 @@ import ClassStats
 
 class Player(ClassStats.ClassType): # Player class som extender classType
     playerName = input("Choose your name, wanderer! ")
-    print(f"Hello {playerName}!")
+    print(f"Hello {playerName}! \n")
     # Første dialog hvor spilleren bliver præsenteret for de forskellige class typer i "spillet".
     print(f"Which class do you want to be? \n1 = Warrior. 2 = Mage. 3 = Wildcard"
                         f"\nThe Warrior has high defense and a powerful attack, but is very weak to magic"
