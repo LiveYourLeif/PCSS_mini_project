@@ -2,6 +2,8 @@ import Enemy
 import PlayerClass
 
 
+level = 0
+
 class Encounter():
 
     def story(self):
@@ -73,6 +75,9 @@ class Encounter():
 
 
 run = Encounter
-run.story(0)
-run.battle(0)
+while (level < 10):
+    print(f"Level {level}")
+    run.story(level)
+    run.battle(level)
+    level += 1
 
