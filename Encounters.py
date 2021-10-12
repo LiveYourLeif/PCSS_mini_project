@@ -1,7 +1,6 @@
 import Enemy
 import PlayerClass
-
-
+level = 0
 
 class Encounter():
 
@@ -41,7 +40,8 @@ class Encounter():
                     currentStrength = PlayerClass.Player.mage.classStrength()
                     print(f"You slap the enemy with the back of your hand!")
                     print(f"You dealt {currentStrength} damage to the {enemyName}")
-                    print(f"{enemyName} health: {enemyHP - currentStrength}")
+                    enemyHP = enemyHP - currentStrength
+                    print(f"{enemyName} health: {enemyHP}")
 
                 if PlayerClass.Player.playerChoice == 3:
                     currentStrength = PlayerClass.Player.wildcard.classStrength()
@@ -74,6 +74,8 @@ class Encounter():
 
 
 run = Encounter
-run.story(0)
-run.battle(0)
-
+while (level < 10):
+    print(f"Level {level}")
+    run.story(level)
+    run.battle(level)
+    level += 1
