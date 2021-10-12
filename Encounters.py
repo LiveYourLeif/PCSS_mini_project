@@ -67,8 +67,10 @@ class Encounter():
                     print(f"You dealt {PlayerClass.Player.wildcard.classMagic()} damage to the {EnemyName}")
                     print(f"{EnemyName} health: {EnemyHP - currentMagic}")
 
-        if EnemyHP <= 0:
-            print("You killed the enemy, good job that was just insane")
+            if EnemyHP <= 0:
+                print("You killed the enemy, good job, mom get the camera")
+                break
+
 
 
 
