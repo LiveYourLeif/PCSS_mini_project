@@ -75,9 +75,6 @@ class Encounter():
 
 
 run = Encounter
-while (level < 10):
-    print(f"Level {level}")
-    run.story(level)
-    run.battle(level)
-    level += 1
+run.story(0)
+run.battle(0)
 
