@@ -8,7 +8,7 @@ class Player(ClassStats.ClassType): # Player class som extender classType
     print(f"Which class do you want to be? \n1 = Warrior. 2 = Mage. 3 = Wildcard"
                         f"\nThe Warrior has high defense and a powerful attack, but is very weak to magic"
                         f"\nThe Mage has overly superior magic powers, but is weak to regular hits from enemies"
-                        f"\nThe Wild Card has random stats! Roll the dice and prepare your numpys")
+                        f"\nThe Wild Card has random stats! Roll the dice and prepare your numpys \n")
     playerChoice = int(input(f"Choose your class, with either the number 1, 2 or 3 : \n"))
 
     # While-loop hvor brugeren bliver bedt om at vælge hvilken class de ønsker at spille. Derudover bliver der efter
