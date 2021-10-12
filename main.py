@@ -2,8 +2,8 @@ import Encounters
 
 
 def main():
-   play = Encounters.Encounter()
-   #play.battle()
+   play = Encounters.PlayerEncounters()
+
 
 
 

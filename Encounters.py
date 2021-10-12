@@ -1,8 +1,12 @@
 import Enemy
 import PlayerClass
-level = 0
+level = 0  # Current level in the game is set to zero
+whoIsFighting = True
 
-class Encounter():
+
+class PlayerEncounters:
+    def __init__(self):
+        pass
 
     def story(self):
         print("")
@@ -12,7 +16,7 @@ class Encounter():
     def battle(self):
         # Make a list with 10 objects called enemyList
         enemylist = []
-        for i in range (10):
+        for i in range(10):
             currentEnemy = Enemy.EnemyType(0, 10, 1, 3, 1, 3, 1, 3)
             enemylist.append(currentEnemy)
 
@@ -68,14 +72,19 @@ class Encounter():
                 if PlayerClass.Player.playerChoice == 3:
                     currentMagic = PlayerClass.Player.wildcard.classMagic()
                     print(f"You cast a magic spell on the enemy!")
-                    print(f"You dealt {PlayerClass.Player.wildcard.classMagic()} damage to the {enemyName}")
+                    print(f"You dealt {currentMagic} damage to the {enemyName}")
                     enemyHP = enemyHP - currentMagic
                     print(f"{enemyName} health: {enemyHP}")
 
 
-run = Encounter
-while (level < 10):
-    print(f"Level {level}")
-    run.story(level)
-    run.battle(level)
-    level += 1
+player = PlayerEncounters
+while level < 10:
+    if whoIsFighting:
+        player.story(level)
+        player.battle(level)
+    else:
+        # Enemy.battle(level)
+        print("disse nødder")
+
+print(f"Level {level}")
+level += 1
