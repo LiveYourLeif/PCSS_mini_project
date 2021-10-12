@@ -25,33 +25,29 @@ class Encounter():
         print(f"A {firstEnemyName} approaches!")
 
 
-        playerAction = int(input(f"It is your turn! What do you want to do?"))
-        while 1:
-                if playerAction == 1:
-                    if PlayerClass.Player.playerChoice == 1:
-                        print(f"You swing at the enemy with your sword!")
-                        print(f"you dealt {PlayerClass.Player.warrior.classStrength()} damage to the {firstEnemyName}")
-                        print(f"current enemy health: {firstEnemyHP - PlayerClass.Player.warrior.classStrength()}")
+        while firstEnemyHP > 0:
+            playerAction = int(input(f"It is your turn! What do you want to do?"))
+            if playerAction == 1:
+                if PlayerClass.Player.playerChoice == 1:
+                    print(f"You swing at the enemy with your sword!")
+                    print(f"You dealt {PlayerClass.Player.warrior.classStrength()} damage to the {firstEnemyName}")
+                    print(f"{firstEnemyName} health: {firstEnemyHP - PlayerClass.Player.warrior.classStrength()}")
+                    break
+                if PlayerClass.Player.playerChoice == 2:
+                    print(f"You slap the enemy with the back of your hand!")
+                    print(f"You dealt {PlayerClass.Player.mage.classStrength()} damage to the {firstEnemyName}")
+                    print(f"{firstEnemyName} health: {firstEnemyHP - PlayerClass.Player.mage.classStrength()}")
+                    break
+                if PlayerClass.Player.playerChoice == 3:
+                    print(f"You roundhouse kick the enemy in the throat!")
+                    print(f"You dealt {PlayerClass.Player.wildcard.classStrength()} damage to the {firstEnemyName}")
+                    print(f"{firstEnemyName} health: {firstEnemyHP - PlayerClass.Player.wildcard.classStrength()}")
+                    break
+
+            #if PlayerClass.Player.playerChoice == 2:
+                #if Playerclass.Player.player
 
 
-                    break
-                elif (playerAction == "Magic"):
-
-                    print(f"You ready your stance and cast a thunderous magic spell!")
-                    break
-                elif (playerAction == "Items"):
-                    print(f"Inside your pouch, you find plenty of helpful items, such as:")
-                    break
-                elif (playerAction == "BattleHelp"):
-                    print(f"List of commands in battle:")
-                    print(f"'Attack' - Deal physical damage to the enemy")
-                    print(f"'Magic' - Deal magical damage to the enemy")
-                    print(f"'Items' - Use an item, if you have one")
-                    break
-                else:
-                    print(f"Action not valid. Type 'BattleHelp' for list of actions.")
-                    playerChoice = input(f"It is your turn! What do you want to do? (Type an action): ")
-                    break
 
 
 run = Encounter
