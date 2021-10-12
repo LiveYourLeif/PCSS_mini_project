@@ -2,7 +2,6 @@ import Enemy
 import PlayerClass
 
 
-level = 0
 
 class Encounter():
 
