@@ -27,7 +27,9 @@ class Encounter():
 
         # Battle between the player and the enemy mob
         while enemyHP > 0:
-            playerAction = int(input(f"It is your turn! What do you want to do?"))
+            playerAction = int(input(f"It is your turn! What do you want to do?\n"
+                                     f"Press 1 for a melee attack.\n"
+                                     f"Press 2 for a magic attack."))
             if playerAction == 1:
                 if PlayerClass.Player.playerChoice == 1:
                     currentStrength = PlayerClass.Player.warrior.classStrength() # Varible to set the current strength of the enemy
@@ -35,9 +37,6 @@ class Encounter():
                     print(f"You swing at the enemy with your sword!")
                     print(f"You dealt {currentStrength} damage to the {enemyName}")
                     print(f"{enemyName} health: {currentEnemyHP - currentStrength}")
-
-
-
 
                 if PlayerClass.Player.playerChoice == 2:
                     currentStrength = PlayerClass.Player.mage.classStrength()
