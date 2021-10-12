@@ -21,53 +21,57 @@ class Encounter():
         newEnemy = enemylist.pop(0)
 
         # Print the name of the new enemy
-        EnemyName = newEnemy.className()
-        EnemyHP = newEnemy.classHP()
-        print(f"A {EnemyName} approaches!")
+        enemyName = newEnemy.className()
+        enemyHP = newEnemy.classHP()
+        print(f"A {enemyName} approaches!")
 
         # Battle between the player and the enemy mob
-        while EnemyHP > 0:
+        while enemyHP > 0:
             playerAction = int(input(f"It is your turn! What do you want to do?"))
             if playerAction == 1:
                 if PlayerClass.Player.playerChoice == 1:
                     currentStrength = PlayerClass.Player.warrior.classStrength() # Varible to set the current strength of the enemy
+                    print(f"Enemy health: {currentEnemyHP}")
                     print(f"You swing at the enemy with your sword!")
-                    print(f"You dealt {currentStrength} damage to the {EnemyName}")
-                    print(f"{EnemyName} health: {EnemyHP - currentStrength}")
+                    print(f"You dealt {currentStrength} damage to the {enemyName}")
+                    print(f"{enemyName} health: {currentEnemyHP - currentStrength}")
+
+
+
 
                 if PlayerClass.Player.playerChoice == 2:
                     currentStrength = PlayerClass.Player.mage.classStrength()
                     print(f"You slap the enemy with the back of your hand!")
-                    print(f"You dealt {currentStrength} damage to the {EnemyName}")
-                    print(f"{EnemyName} health: {EnemyHP - currentStrength}")
+                    print(f"You dealt {currentStrength} damage to the {enemyName}")
+                    print(f"{enemyName} health: {enemyHP - currentStrength}")
 
                 if PlayerClass.Player.playerChoice == 3:
                     currentStrength = PlayerClass.Player.wildcard.classStrength()
                     print(f"You roundhouse kick the enemy in the throat!")
-                    print(f"You dealt {PlayerClass.Player.wildcard.classStrength()} damage to the {EnemyName}")
-                    print(f"{EnemyName} health: {EnemyHP - currentStrength}")
+                    print(f"You dealt {PlayerClass.Player.wildcard.classStrength()} damage to the {enemyName}")
+                    print(f"{enemyName} health: {enemyHP - currentStrength}")
 
 
             if playerAction == 2:
                 if PlayerClass.Player.playerChoice == 1:
                     currentMagic = PlayerClass.Player.warrior.classMagic()
                     print(f"You try to cast a fireball, but only tickle the enemy with sparks!")
-                    print(f"You dealt {currentMagic} damage to the {EnemyName}")
-                    print(f"{EnemyName} health: {EnemyHP - currentMagic}")
+                    print(f"You dealt {currentMagic} damage to the {enemyName}")
+                    print(f"{enemyName} health: {enemyHP - currentMagic}")
 
                 if PlayerClass.Player.playerChoice == 2:
                     currentMagic = PlayerClass.Player.mage.classMagic()
                     print(f"You use a powerful magic attack on the enemy!")
-                    print(f"You dealt {currentMagic} damage to the {EnemyName}")
-                    print(f"{EnemyName} health: {EnemyHP - currentMagic}")
+                    print(f"You dealt {currentMagic} damage to the {enemyName}")
+                    print(f"{enemyName} health: {enemyHP - currentMagic}")
 
                 if PlayerClass.Player.playerChoice == 3:
                     currentMagic = PlayerClass.Player.wildcard.classMagic()
                     print(f"You cast a magic spell on the enemy!")
-                    print(f"You dealt {PlayerClass.Player.wildcard.classMagic()} damage to the {EnemyName}")
-                    print(f"{EnemyName} health: {EnemyHP - currentMagic}")
+                    print(f"You dealt {PlayerClass.Player.wildcard.classMagic()} damage to the {enemyName}")
+                    print(f"{enemyName} health: {enemyHP - currentMagic}")
 
-            if EnemyHP <= 0:
+            if enemyHP <= 0:
                 print("You killed the enemy, good job, mom get the camera")
                 break
 
