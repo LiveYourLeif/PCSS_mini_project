@@ -2,7 +2,7 @@ import random
 import ClassStats
 
 
-class EnemyType(ClassStats.ClassType): #Vi kan godt bare inherete constructoren fra ClassType, vi bruger de samme værdier anyways
+class EnemyType(ClassStats.ClassType): #Vi kan godt bare inherite constructoren fra ClassType, vi bruger de samme værdier anyways
     def __init__(self, n,  h, sl, su, dl, du, ml, mu):
         self.name = n
         self.health = h
