@@ -11,8 +11,8 @@ class Encounter():
 
     def battle(self):
         # Make a list with 10 objects called enemyList
-        for i in range(10):
-            enemylist = []
+        enemylist = []
+        for i in range (10):
             currentEnemy = Enemy.EnemyType(0, 10, 1, 3, 1, 3, 1, 3)
             enemylist.append(currentEnemy)
 
