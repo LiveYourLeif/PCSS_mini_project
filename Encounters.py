@@ -37,8 +37,8 @@ class PlayerEncounters:
                     print(f"You swing at the enemy with your sword!")
                     print(f"You dealt {currentStrength} damage to the {enemyName}")
                     enemyHP = enemyHP - currentStrength
-                    print(f"{enemyName} health: {enemyHP}")
-
+                    print(f"{enemyName} health: {enemyHP} \n")
+                    whoIsFighting = False
 
                 if PlayerClass.Player.playerChoice == 2:
                     currentStrength = PlayerClass.Player.mage.classStrength()
@@ -74,7 +74,7 @@ class PlayerEncounters:
                     print(f"You cast a magic spell on the enemy!")
                     print(f"You dealt {currentMagic} damage to the {enemyName}")
                     enemyHP = enemyHP - currentMagic
-                    print(f"{enemyName} health: {enemyHP}")
+                    print(f"{enemyName} health: {enemyHP} \n")
 
 
 player = PlayerEncounters
