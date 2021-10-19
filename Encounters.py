@@ -1,6 +1,6 @@
 import Enemy
 import PlayerClass
-import ipdb
+
 
 level = 0  # Current level in the game is set to zero
 whoIsFighting = True
@@ -33,7 +33,7 @@ class PlayerEncounters:
         newEnemy = enemylist.pop(0)
 
         # Print the name of the new enemy
-        enemyName = newEnemy.name
+        enemyName = newEnemy.className()
         enemyHP = newEnemy.health
         print(f"A {enemyName} approaches!")
         # Battle between the player and the enemy mob
@@ -83,7 +83,6 @@ class PlayerEncounters:
                         enemyHP = enemyHP - currentMagic
                         print(f"{enemyName} health: {enemyHP} \n")
                 if enemyHP <= 0:
-                    #ipdb.set_trace()
                     print(f"{enemyName} has fallen to your powers\n")
                     whoIsFighting = True
                     combatOnGoing = False

@@ -17,9 +17,6 @@ class EnemyType(): #Vi kan godt bare inherite constructoren fra ClassType, vi br
     def className(self):
         enemyName = ["Goblin", "Troll", "Blob", "Skeleton", "Reanimated Knight", "Bonko Tossen", "Draugr", "Ligma",
                      "Werewolf"]
-        #heroes = {"Peter":HeroType(h=100), "Oskar":HeroType(h=4)}
-        #peter = heroes["Peter"]
-        #oskar = heroes["Oskar"]
         return random.choice(enemyName)
 
     def enemyHP(self):
