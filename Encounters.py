@@ -4,24 +4,29 @@ import ipdb
 
 level = 0  # Current level in the game is set to zero
 whoIsFighting = True
-combatOnGoing = True
 
 class PlayerEncounters:
     def __init__(self):
         pass
 
-    def story(self):
-        print("")
-        print("Your task is to defeat the legendary enemy who is threatening the kingdom.\n"
+    def story(level):
+        if level == 0:
+            print("Your task is to defeat the legendary enemy who is threatening the kingdom.\n"
               "You wander out into the wilderness. ")
+        if level == 1:
+            print("This is the SECOND LEVEL! You are in a forest now and you see a shadow move!")
+        if level == 2:
+            print("THis is the THIRD LEVEL! You are doing a nasty whip and nae nae when you see a monster!")
 
     def battle(self):
         global whoIsFighting
+        global combatOnGoing
+        global enemyHP
         # Make a list with 10 objects called enemyList
         enemylist = []
-        ipdb.set_trace()
         for i in range(10):
-            currentEnemy = Enemy.EnemyType(0, 10+(i*5), 1, 3, 1, 3, 1, 3)
+            newName = Enemy.EnemyType.className(self)
+            currentEnemy = Enemy.EnemyType(newName, 10+(i*5), 1, 3, 1, 3, 1, 3)
             enemylist.append(currentEnemy)
 
         # Pop the first element of enemyList and make it a new enemy
@@ -78,10 +83,10 @@ class PlayerEncounters:
                         enemyHP = enemyHP - currentMagic
                         print(f"{enemyName} health: {enemyHP} \n")
                 if enemyHP <= 0:
+                    #ipdb.set_trace()
                     print(f"{enemyName} has fallen to your powers\n")
                     whoIsFighting = True
                     combatOnGoing = False
-        return enemyHP
 
 
     def enemyBattle(self):
@@ -91,13 +96,14 @@ class PlayerEncounters:
 
 player = PlayerEncounters
 for i in range(10):
-    player.story(level)
+    player.story(i)
+    combatOnGoing = True
     while combatOnGoing:
         if whoIsFighting:
             player.battle(i)
             whoIsFighting = False
         else:
-            if (enemyHP > 0):
+            if(enemyHP > 0):
                 player.enemyBattle(i)
-                whoIsFighting = True
+            whoIsFighting = True
 
