@@ -4,6 +4,8 @@ import PlayerClass
 
 level = 0  # Current level in the game is set to zero
 whoIsFighting = True
+gameOverState = 0
+warriorHP = PlayerClass.Player.warrior.health
 
 class PlayerEncounters:
     def __init__(self):
@@ -68,6 +70,7 @@ class PlayerEncounters:
                         print(f"You dealt {currentStrength} damage to the {enemyName}")
                         enemyHP = enemyHP - currentStrength
                         print(f"{enemyName} health: {enemyHP} \n")
+                        #ameOverState()
 
                     if PlayerClass.Player.playerChoice == 2:
                         currentStrength = PlayerClass.Player.mage.classStrength()
@@ -128,3 +131,8 @@ for i in range(10):
                 player.enemyBattle(i)
             whoIsFighting = True
 
+
+#def gameOverState:
+ #   if warriorHP == 0:
+  #      gameOverState = 99
+   #     warriorHP = 50
