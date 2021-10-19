@@ -1,5 +1,6 @@
 import Enemy
 import PlayerClass
+
 level = 0  # Current level in the game is set to zero
 whoIsFighting = True
 
@@ -17,7 +18,7 @@ class PlayerEncounters:
         # Make a list with 10 objects called enemyList
         enemylist = []
         for i in range(10):
-            currentEnemy = Enemy.EnemyType(0, 10, 1, 3, 1, 3, 1, 3)
+            currentEnemy = Enemy.EnemyType(0, 10+(i*5), 1, 3, 1, 3, 1, 3)
             enemylist.append(currentEnemy)
 
         # Pop the first element of enemyList and make it a new enemy
