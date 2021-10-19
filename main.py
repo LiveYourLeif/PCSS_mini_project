@@ -1,5 +1,5 @@
 import Encounters
-
+import ipdb
 
 def main():
    play = Encounters.PlayerEncounters()
