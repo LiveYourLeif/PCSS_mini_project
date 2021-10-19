@@ -59,6 +59,8 @@ class PlayerEncounters:
         # Print the name of the new enemy
         enemyName = newEnemy.className()
         enemyHP = newEnemy.health
+        global enemyStrength
+        enemyStrength= newEnemy.classStrength()
         print(f"A {enemyName} approaches!")
         # Battle between the player and the enemy mob
         while enemyHP > 0 and whoIsFighting:
@@ -115,6 +117,8 @@ class PlayerEncounters:
 
     def enemyBattle(self):
         print("enemy does something")
+        yourHealth = warriorHP - enemyStrength
+        print(f"Your health is now: {yourHealth}")
         #whoIsFighting = True
 
 

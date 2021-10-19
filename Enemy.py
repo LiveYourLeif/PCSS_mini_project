@@ -24,6 +24,14 @@ class EnemyType(): #Vi kan godt bare inherite constructoren fra ClassType, vi br
         hitPoints.set_HP(self.health)
         return hitPoints.get_HP()
 
+    def classStrength(self):
+        strength = Stats.Strength()
+        strength.set_strength(random.randint(self.strengthL, self.strengthU))
+        return strength.get_strength()
+
+
+
+
 
 
 
