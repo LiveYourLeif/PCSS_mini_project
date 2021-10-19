@@ -3,7 +3,6 @@ import PlayerClass
 level = 0  # Current level in the game is set to zero
 whoIsFighting = True
 
-
 class PlayerEncounters:
     def __init__(self):
         pass
@@ -14,6 +13,7 @@ class PlayerEncounters:
               "You wander out into the wilderness. ")
 
     def battle(self):
+        global whoIsFighting
         # Make a list with 10 objects called enemyList
         enemylist = []
         for i in range(10):
@@ -27,7 +27,6 @@ class PlayerEncounters:
         enemyName = newEnemy.className()
         enemyHP = newEnemy.classHP()
         print(f"A {enemyName} approaches!")
-
         # Battle between the player and the enemy mob
         while enemyHP > 0:
             playerAction = int(input(f"It is your turn! What do you want to do?"))
@@ -69,22 +68,28 @@ class PlayerEncounters:
                     enemyHP = enemyHP - currentMagic
                     print(f"{enemyName} health: {enemyHP} \n")
 
-                if PlayerClass.Player.playerChoice == 3:
-                    currentMagic = PlayerClass.Player.wildcard.classMagic()
-                    print(f"You cast a magic spell on the enemy!")
-                    print(f"You dealt {currentMagic} damage to the {enemyName}")
-                    enemyHP = enemyHP - currentMagic
-                    print(f"{enemyName} health: {enemyHP} \n")
+                    if PlayerClass.Player.playerChoice == 3:
+                        currentMagic = PlayerClass.Player.wildcard.classMagic()
+                        print(f"You cast a magic spell on the {enemyName}!")
+                        print(f"You dealt {currentMagic} damage to the {enemyName}")
+                        enemyHP = enemyHP - currentMagic
+                        print(f"{enemyName} health: {enemyHP} \n")
+                if enemyHP <= 0:
+                    print(f"{enemyName} has fallen to your powers\n")
+                    whoIsFighting = False
+
+
+    def enemyBattle(self):
+        print("enemy does something")
+        #whoIsFighting = True
 
 
 player = PlayerEncounters
-while level < 10:
+player.story(level)
+for i in range(10):
     if whoIsFighting:
-        player.story(level)
-        player.battle(level)
+        player.battle(i)
     else:
-        # Enemy.battle(level)
-        print("disse nødder")
+        player.enemyBattle(i)
+        whoIsFighting = True
 
-print(f"Level {level}")
-level += 1
