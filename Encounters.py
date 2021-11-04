@@ -1,5 +1,6 @@
 import Enemy
 import PlayerClass
+import ipdb
 
 
 level = 0  # Current level in the game is set to zero
@@ -113,6 +114,8 @@ class PlayerEncounters:
                     print(f"{enemyName} has fallen to your powers\n")
                     whoIsFighting = True
                     combatOnGoing = False
+                else:
+                    whoIsFighting = False
 
 
     def enemyBattle(self):
@@ -129,7 +132,6 @@ for i in range(10):
     while combatOnGoing:
         if whoIsFighting:
             player.battle(i)
-            whoIsFighting = False
         else:
             if(enemyHP > 0):
                 player.enemyBattle(i)
