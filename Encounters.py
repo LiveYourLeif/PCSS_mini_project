@@ -6,7 +6,7 @@ import PlayerClass
 level = 0  # Current level in the game is set to zero
 whoIsFighting = True
 gameOverState = 0
-#playerHP = ClassStats.health
+playerHealth = ClassStats.health
 
 class PlayerEncounters:
     def __init__(self):
