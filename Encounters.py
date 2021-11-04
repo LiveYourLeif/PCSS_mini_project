@@ -37,7 +37,7 @@ class PlayerEncounters:
                   "A single stone coffin lays atop a flight of steps.\n"
                   "As you walk closer to investigate, the lid of the coffin bursts into the air, and lands right next to you.\n"
                   "With a roar that rumbles the entire mausoleum, a [MINIBOSS] crawls out of the coffin.\n")
-        if level ==5:
+        if level == 5:
             print("Miraculously, you’ve slain the beast.\n"
                   "You take a moment to catch your breath, before you venture further into the mausoleum.\n"
                   "At the back of the room, you spot a large door, with light shining through the cracks. You give it a push, and it creaks open.\n"
