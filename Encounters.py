@@ -1,12 +1,13 @@
+import ClassStats
 import Enemy
 import PlayerClass
-import ipdb
+
 
 
 level = 0  # Current level in the game is set to zero
 whoIsFighting = True
 gameOverState = 0
-warriorHP = PlayerClass.Player.warrior.health
+#playerHP = ClassStats.health
 
 class PlayerEncounters:
     def __init__(self):
@@ -117,12 +118,14 @@ class PlayerEncounters:
                 else:
                     whoIsFighting = False
 
-
     def enemyBattle(self):
+        playerHealth = ClassStats.health
+        print(playerHealth)
         print("enemy does something")
-        yourHealth = warriorHP - enemyStrength
-        print(f"Your health is now: {yourHealth}")
-        #whoIsFighting = True
+        playerHealth = playerHealth - enemyStrength
+        print(f"Your health is now: {playerHealth}")
+
+
 
 
 player = PlayerEncounters
