@@ -62,7 +62,8 @@ class PlayerEncounters:
         enemyName = newEnemy.className()
         enemyHP = newEnemy.health
         global enemyStrength
-        enemyStrength= newEnemy.classStrength()
+        enemyStrength = newEnemy.classStrength()
+
         print(f"A {enemyName} approaches!")
         # Battle between the player and the enemy mob
         while enemyHP > 0 and whoIsFighting:
