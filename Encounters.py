@@ -3,7 +3,6 @@ import Enemy
 import PlayerClass
 
 
-
 level = 0  # Current level in the game is set to zero
 whoIsFighting = True
 gameOverState = 0
@@ -44,25 +43,33 @@ class PlayerEncounters:
                   "Filled with hope of reaching the outside world again, you hurry through the opening, but what meets your eye isn’t the bright sky, but a fiery portal with a [ENEMY 6] crouched in front.\n"
                   "You draw your weapon.\n")
 
+    def enemyGenerator(self):
+        enemyList = []
+        for i in range(10):
+            newName = Enemy.EnemyType.className(self)
+            currentEnemy = Enemy.EnemyType(newName, 10 + (i * 5), 1, 3, 1, 3, 1, 3)
+            enemyList.append(currentEnemy)
+
+        # Pop the first element of enemyList and make it a new enemy
+        #newEnemy = enemylist.pop(0)
+
+        # Print the name of the new enemy
+        return enemyList
+
+    enemyGenerator(0)
+
     def battle(self):
         global whoIsFighting
         global combatOnGoing
-        global enemyHP
-        # Make a list with 10 objects called enemyList
-        enemylist = []
-        for i in range(10):
-            newName = Enemy.EnemyType.className(self)
-            currentEnemy = Enemy.EnemyType(newName, 10+(i*5), 1, 3, 1, 3, 1, 3)
-            enemylist.append(currentEnemy)
+        global playerHealth
 
-        # Pop the first element of enemyList and make it a new enemy
-        newEnemy = enemylist.pop(0)
 
-        # Print the name of the new enemy
+        enemy = PlayerEncounters.enemyGenerator(0)
+        newEnemy = enemy.pop(0)
         enemyName = newEnemy.className()
         enemyHP = newEnemy.health
-        global enemyStrength
         enemyStrength = newEnemy.classStrength()
+
 
         print(f"A {enemyName} approaches!")
         # Battle between the player and the enemy mob
@@ -75,11 +82,11 @@ class PlayerEncounters:
                         print(f"You dealt {currentStrength} damage to the {enemyName}")
                         enemyHP = enemyHP - currentStrength
                         print(f"{enemyName} health: {enemyHP} \n")
-                        #ameOverState()
+                        whoIsFighting = False
 
                     if PlayerClass.Player.playerChoice == 2:
                         currentStrength = PlayerClass.Player.mage.classStrength()
-                        print(f"You slap the {currentEnemy} with the back of your hand!")
+                        print(f"You slap the {enemyName} with the back of your hand!")
                         print(f"You dealt {currentStrength} damage to the {enemyName}")
                         enemyHP = enemyHP - currentStrength
                         print(f"{enemyName} health: {enemyHP} \n")
@@ -115,18 +122,13 @@ class PlayerEncounters:
                 if enemyHP <= 0:
                     print(f"{enemyName} has fallen to your powers\n")
                     whoIsFighting = True
-                    combatOnGoing = False
-                else:
-                    whoIsFighting = False
 
-    def enemyBattle(self):
-        playerHealth = ClassStats.health
-        print(playerHealth)
-        print("enemy does something")
-        playerHealth = playerHealth - enemyStrength
-        print(f"Your health is now: {playerHealth}")
+        while not whoIsFighting:
+            print("enemy does something")
 
-
+            playerHealth = playerHealth - enemyStrength
+            print(f"Your health is now: {playerHealth}")
+            whoIsFighting = True
 
 
 player = PlayerEncounters
@@ -137,8 +139,6 @@ for i in range(10):
         if whoIsFighting:
             player.battle(i)
         else:
-            if(enemyHP > 0):
-                player.enemyBattle(i)
             whoIsFighting = True
 
 
