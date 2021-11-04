@@ -63,7 +63,6 @@ class PlayerEncounters:
         global combatOnGoing
         global playerHealth
 
-
         enemy = PlayerEncounters.enemyGenerator(0)
         newEnemy = enemy.pop(0)
         enemyName = newEnemy.className()
@@ -82,7 +81,6 @@ class PlayerEncounters:
                         print(f"You dealt {currentStrength} damage to the {enemyName}")
                         enemyHP = enemyHP - currentStrength
                         print(f"{enemyName} health: {enemyHP} \n")
-                        whoIsFighting = False
 
                     if PlayerClass.Player.playerChoice == 2:
                         currentStrength = PlayerClass.Player.mage.classStrength()
@@ -125,7 +123,6 @@ class PlayerEncounters:
 
         while not whoIsFighting:
             print("enemy does something")
-
             playerHealth = playerHealth - enemyStrength
             print(f"Your health is now: {playerHealth}")
             whoIsFighting = True
