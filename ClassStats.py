@@ -2,7 +2,7 @@ import random
 import Stats
 
 # Values som bliver ændret nede i constructoren for ClassType
-health = 0
+health = 50
 strengthL = 0
 strengthU = 0
 defenceL = 0
