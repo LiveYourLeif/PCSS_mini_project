@@ -1,7 +1,7 @@
 import Encounters
 
 def main():
-   play = Encounters.PlayerEncounters()
+   play = Encounters.battleSystem()
 
 
 if __name__ == "__main__":
