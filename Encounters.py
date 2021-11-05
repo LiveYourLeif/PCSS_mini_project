@@ -7,6 +7,8 @@ level = 0  # Current level in the game is set to zero
 whoIsFighting = True
 gameOverState = 0
 playerHealth = ClassStats.health
+potionCount = 5
+
 
 class battleSystem:
     def __init__(self):
@@ -21,15 +23,15 @@ class battleSystem:
 
         return enemyList
 
-    enemyGenerator(0)
+    enemy = enemyGenerator(0)
 
     def battle(self):
         global whoIsFighting
         global combatOnGoing
         global playerHealth
+        global potionCount
 
-        enemy = PlayerEncounters.enemyGenerator(0)
-        newEnemy = enemy.pop(0)
+        newEnemy = battleSystem.enemy.pop(0)
         enemyName = newEnemy.className()
         enemyStrength = newEnemy.classStrength()
         enemyHP = newEnemy.health
