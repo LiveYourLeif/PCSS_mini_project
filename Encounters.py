@@ -1,6 +1,8 @@
+import random
 import ClassStats
 import Enemy
 import PlayerClass
+import Lore
 
 
 level = 0  # Current level in the game is set to zero
@@ -20,7 +22,6 @@ class battleSystem:
             newName = Enemy.EnemyType.className(self)
             currentEnemy = Enemy.EnemyType(newName, (i * 5) + 10, (i * 2) + 1, (i * 2) + 3)
             enemyList.append(currentEnemy)
-
         return enemyList
 
     enemy = enemyGenerator(0)
@@ -117,56 +118,17 @@ class battleSystem:
                         combatOnGoing = False
 
             while not whoIsFighting:
-                print(f"The {enemyName} slashes at you!")
+                print(random.choice(Lore.enemyTaunts(enemyName)))
                 print(f"It does {enemyStrength} damage!")
                 playerHealth = playerHealth - enemyStrength
                 print(f"Your health is now: {playerHealth}\n")
                 whoIsFighting = True
 
-    def story(level):
-        if level == 0:
-            print("Your task is to defeat the legendary enemy who is threatening the kingdom.\n"
-                  f"You wander into the wilderness. You hear a rumbling in the bushes, before a appears in front of you.\n")
-        if level == 1:
-            print("The first beast of your adventure is slain, and you traverse further into the dreadful woods.\n"
-                  "Behind some trees, you spot a cave entrance, with a [ENEMY 2] guarding it. You approach\n.")
-        if level == 2:
-            print("Your dead enemy is left bleeding in the mud, as you push it aside to enter the cave. \n"
-                  "Dark and mysterious, the cave sends shivers down your spine. \n"
-                  "Mysterious lit candles adorn the sides of the cave’s tall walls, which forms a pathway in the darkness.\n"
-                  "You know where you have to go.\n" 
-                  "Suddenly the silence of the cave is broken by a deafening roar, as a [ENEMY 3] emerges from the shadows.\n")
-        if level == 3:
-            print("You continue walking down the dimly lit pathway in the darkness for what feels like hours.\n"
-                  "The walls of the cave almost seem to close in on you, as the pathway becomes narrower and narrower, until you can barely stand upright. \n"
-                  "You spot an old wooden door with old metal chains keeping it shut, and in front, a [ENEMY 4]\n")
-        if level == 4:
-            print("After a close fight, you narrowly escape with your life.\n"
-                  "During the fight, the metal chains on the door in front of you seemingly broke.\n"
-                  "You give the door a hard push, and as it slams open with a loud creak, you find yourself standing in front of a massive mausoleum.\n"
-                  "A single stone coffin lays atop a flight of steps.\n"
-                  "As you walk closer to investigate, the lid of the coffin bursts into the air, and lands right next to you.\n"
-                  "With a roar that rumbles the entire mausoleum, a [MINIBOSS] crawls out of the coffin.\n")
-        if level == 5:
-            print("Miraculously, you’ve slain the beast.\n"
-                  "You take a moment to catch your breath, before you venture further into the mausoleum.\n"
-                  "At the back of the room, you spot a large door, with light shining through the cracks. You give it a push, and it creaks open.\n"
-                  "Filled with hope of reaching the outside world again, you hurry through the opening, but what meets your eye isn’t the bright sky, but a fiery portal with a [ENEMY 6] crouched in front.\n"
-                  "You draw your weapon.\n")
-
-
 player = battleSystem
 for i in range(10):
-    player.story(i)
     combatOnGoing = True
+    Lore.story(i)
     while combatOnGoing:
         player.battle(i)
         if i >= 10:
             combatOnGoing = False
-
-
-
-#def gameOverState:
- #   if warriorHP == 0:
-  #      gameOverState = 99
-   #     warriorHP = 50
