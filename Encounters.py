@@ -150,10 +150,13 @@ class battleSystem:
 player = battleSystem
 for i in range(10):
     combatOnGoing = True
-    Lore.story(i)
     while combatOnGoing:
-        player.battle(i)
-        if i >= 10:
-            combatOnGoing = False
+        if playerHealth > 0:
+            Lore.story(i)
+            player.battle(i)
+            if i >= 10:
+                combatOnGoing = False
+        else:
+            break
 
 print(f"Your final is score: {score}")
