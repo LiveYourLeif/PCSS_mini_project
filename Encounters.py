@@ -26,13 +26,6 @@ class battleSystem:
 
     enemy = enemyGenerator(0)
 
-    def GameOver(self):
-        if playerHealth <= 0:
-            print("You have been laid in the grave")
-            gameOverState = True
-            combatOnGoing = False
-
-
     def battle(self):
         global whoIsFighting
         global combatOnGoing

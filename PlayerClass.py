@@ -32,4 +32,3 @@ class Player(ClassStats.ClassType): # Player class som extender classType
         else:
             print(f"Your choice was not a class, {playerName}")
             playerChoice = int(input(f"Choose your class, with either the number 1, 2 or 3 : \n"))
-
