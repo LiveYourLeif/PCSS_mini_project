@@ -42,7 +42,7 @@ def enemyTaunts(name):
               f"The {name} attacks!",
               f"The {name} stabs you!",
               f"The {name} cancels you on twitter!",
-              f"The {name} lowers your social credits score!",
-              f"The {name} uses a poison attack!"
+              f"The {name} lowers your social credit score!",
+              f"The {name} uses a poison attack!",
               f"The {name} sucks out your life essence!"]
     return taunts
