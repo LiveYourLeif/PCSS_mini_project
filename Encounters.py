@@ -54,7 +54,8 @@ class battleSystem:
                             print(f"You swing at the {enemyName} with your sword!")
                             print(f"You dealt {currentStrength} damage to the {enemyName}")
                             enemyHP = enemyHP - currentStrength
-                            print(f"{enemyName} health: {enemyHP} \n")
+                            if enemyHP > 0:
+                                print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
                             score += 1
 
@@ -63,7 +64,8 @@ class battleSystem:
                             print(f"You slap the {enemyName} with the back of your hand!")
                             print(f"You dealt {currentStrength} damage to the {enemyName}")
                             enemyHP = enemyHP - currentStrength
-                            print(f"{enemyName} health: {enemyHP} \n")
+                            if enemyHP > 0:
+                                print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
                             score += 1
 
@@ -72,7 +74,8 @@ class battleSystem:
                             print(f"You roundhouse kick the {enemyName} in the throat!")
                             print(f"You dealt {currentStrength} damage to the {enemyName}")
                             enemyHP = enemyHP - currentStrength
-                            print(f"{enemyName} health: {enemyHP} \n")
+                            if enemyHP > 0:
+                                print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
                             score += 1
 
@@ -82,7 +85,8 @@ class battleSystem:
                             print(f"You try to cast a fireball, but only tickle the {enemyName} with sparks!")
                             print(f"You dealt {currentMagic} damage to the {enemyName}")
                             enemyHP = enemyHP - currentMagic
-                            print(f"{enemyName} health: {enemyHP} \n")
+                            if enemyHP > 0:
+                                print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
                             score += 1
 
@@ -91,7 +95,8 @@ class battleSystem:
                             print(f"You use a powerful magic attack on the {enemyName}!")
                             print(f"You dealt {currentMagic} damage to the {enemyName}")
                             enemyHP = enemyHP - currentMagic
-                            print(f"{enemyName} health: {enemyHP} \n")
+                            if enemyHP > 0:
+                                print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
                             score += 1
 
@@ -100,7 +105,8 @@ class battleSystem:
                             print(f"You cast a magic spell on the {enemyName}!")
                             print(f"You dealt {currentMagic} damage to the {enemyName}")
                             enemyHP = enemyHP - currentMagic
-                            print(f"{enemyName} health: {enemyHP} \n")
+                            if enemyHP > 0:
+                                print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
                             score += 1
 
