@@ -22,17 +22,6 @@ class Strength:
         self._strength = x
 
 
-class Defence:
-    def __init__(self, defence = 0):
-        self._defence = defence
-
-    def get_defence(self):
-        return self._defence
-
-    def set_defence(self, x):
-        self._defence = x
-
-
 class Magic:
     def __init__(self, magic = 0):
         self._magic = magic

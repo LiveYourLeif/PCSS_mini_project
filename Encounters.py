@@ -131,24 +131,27 @@ class battleSystem:
                         else:
                             print(f"You are out of Underberg!\n")
 
-
                     if playerAction == 4:
                         print(f"Your stats: {playerHealth} Health | {potionCount} potions remaining\n"
                               f"{enemyName} stats: {enemyHP} Health\n")
-
 
                     if enemyHP <= 0:
                         print(f"{enemyName} has fallen to your powers\n")
                         whoIsFighting = True
                         combatOnGoing = False
 
-
             while not whoIsFighting:
                 print(random.choice(Lore.enemyTaunts(enemyName)))
                 print(f"It does {enemyStrength} damage!")
                 playerHealth = playerHealth - enemyStrength
-                print(f"Your health is now: {playerHealth}\n")
-                whoIsFighting = True
+                if playerHealth > 0:
+                    print(f"Your health is now: {playerHealth}\n")
+                    whoIsFighting = True
+                else:
+                    print("You have been laid to rest.")
+                    whoIsFighting = True
+                    combatOnGoing = False
+                    break
 
 
 player = battleSystem

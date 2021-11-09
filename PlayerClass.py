@@ -1,6 +1,5 @@
 import ClassStats
 
-
 class Player(ClassStats.ClassType): # Player class som extender classType
     playerName = input("Choose your name, wanderer! ")
     print(f"Hello {playerName}! \n")
@@ -16,15 +15,16 @@ class Player(ClassStats.ClassType): # Player class som extender classType
     while 1:
         if playerChoice == 1:
             print(f"\nYou have chosen the warrior, great choice {playerName}, get ready for an exciting adventure! \n")
-            warrior = ClassStats.ClassType(ClassStats.health, ClassStats.warriorStrengthL, ClassStats.warriorStrengthU, ClassStats.warriorMagicL, ClassStats.warriorMagicU) # Creates object for the class Warrior
+            warrior = ClassStats.ClassType(ClassStats.health, 7, 10, 1, 3) # Creates object for the class Warrior
             break
 
         elif playerChoice == 2:
             print(f"You have chosen the mage, great choice {playerName}, get ready for an exciting adventure! \n")
-            mage = ClassStats.ClassType(ClassStats.health, 3, 6, 8, 10) # Creates object for the class Mage
+            mage = ClassStats.ClassType(ClassStats.health, 3, 6, 7, 10) # Creates object for the class Mage
             break
 
         elif playerChoice == 3:
+
             print(f"You have chosen the wild card, brave choice {playerName}, get ready for an exciting adventure! \n")
             wildcard = ClassStats.ClassType(ClassStats.health, 1, 10, 1, 10) # Creates object for the class Wildcard
             break
