@@ -3,21 +3,17 @@ import Stats
 
 # Values som bliver ændret nede i constructoren for ClassType
 health = 50
-strengthL = 0
-strengthU = 0
-defenceL = 0
-defenceU = 0
-magicL = 0
-magicU = 0
+warriorStrengthL = 7
+warriorStrengthU = 10
+warriorMagicL = 0
+warriorMagicU = 2
 
 # ClassType indeholder methods for at få de forskellige values til characters i spillet.
 class ClassType:
-    def __init__(self, h, sl, su, dl, du, ml, mu):
+    def __init__(self, h, sl, su, ml, mu):
         self.health = h
         self.strengthL = sl
         self.strengthU = su
-        self.defenceL = dl
-        self.defenceU = du
         self.magicL = ml
         self.magicU = mu
 
@@ -30,11 +26,6 @@ class ClassType:
         strength = Stats.Strength()
         strength.set_strength(random.randint(self.strengthL, self.strengthU))
         return strength.get_strength()
-
-    def classDefence(self):
-        defence = Stats.Defence()
-        defence.set_defence(random.randint(self.defenceL, self.defenceU))
-        return defence.get_defence()
 
     def classMagic(self):
         magic = Stats.Magic()

@@ -10,6 +10,7 @@ whoIsFighting = True
 gameOverState = 0
 playerHealth = ClassStats.health
 potionCount = 5
+score = 0
 
 
 class battleSystem:
@@ -31,11 +32,14 @@ class battleSystem:
         global combatOnGoing
         global playerHealth
         global potionCount
+        global score
+        gameOverState = False
 
         newEnemy = battleSystem.enemy.pop(0)
         enemyName = newEnemy.className()
         enemyStrength = newEnemy.classStrength()
         enemyHP = newEnemy.health
+
 
         print(f"A {enemyName} approaches!")
         # Battle between the player and the enemy mob
@@ -43,6 +47,7 @@ class battleSystem:
             while enemyHP > 0 and whoIsFighting:
                     playerAction = int(input(f"It is your turn! What do you want to do?\n"
                                              "Melee = 1 | Magic = 2 | Heal = 3 | Stats = 4 \n"))
+
                     if playerAction == 1:
                         if PlayerClass.Player.playerChoice == 1:
                             currentStrength = PlayerClass.Player.warrior.classStrength() # Varible to set the current strength of the enemy
@@ -51,6 +56,7 @@ class battleSystem:
                             enemyHP = enemyHP - currentStrength
                             print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
+                            score += 1
 
                         if PlayerClass.Player.playerChoice == 2:
                             currentStrength = PlayerClass.Player.mage.classStrength()
@@ -59,6 +65,7 @@ class battleSystem:
                             enemyHP = enemyHP - currentStrength
                             print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
+                            score += 1
 
                         if PlayerClass.Player.playerChoice == 3:
                             currentStrength = PlayerClass.Player.wildcard.classStrength()
@@ -67,6 +74,7 @@ class battleSystem:
                             enemyHP = enemyHP - currentStrength
                             print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
+                            score += 1
 
                     if playerAction == 2:
                         if PlayerClass.Player.playerChoice == 1:
@@ -76,6 +84,7 @@ class battleSystem:
                             enemyHP = enemyHP - currentMagic
                             print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
+                            score += 1
 
                         if PlayerClass.Player.playerChoice == 2:
                             currentMagic = PlayerClass.Player.mage.classMagic()
@@ -84,6 +93,7 @@ class battleSystem:
                             enemyHP = enemyHP - currentMagic
                             print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
+                            score += 1
 
                         if PlayerClass.Player.playerChoice == 3:
                             currentMagic = PlayerClass.Player.wildcard.classMagic()
@@ -92,6 +102,8 @@ class battleSystem:
                             enemyHP = enemyHP - currentMagic
                             print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
+                            score += 1
+
 
                     if playerAction == 3:
                         if potionCount > 0:
@@ -103,6 +115,7 @@ class battleSystem:
                             print(f"You drink the Underberg and restore 20 health. You are reinvigorated.")
                             print(f"Underbergs remaining in your pocket: {potionCount}/5.\n")
                             whoIsFighting = False
+                            score += 1
                         else:
                             print(f"You are out of Underberg!\n")
 
@@ -117,12 +130,14 @@ class battleSystem:
                         whoIsFighting = True
                         combatOnGoing = False
 
+
             while not whoIsFighting:
                 print(random.choice(Lore.enemyTaunts(enemyName)))
                 print(f"It does {enemyStrength} damage!")
                 playerHealth = playerHealth - enemyStrength
                 print(f"Your health is now: {playerHealth}\n")
                 whoIsFighting = True
+
 
 player = battleSystem
 for i in range(10):
@@ -132,3 +147,5 @@ for i in range(10):
         player.battle(i)
         if i >= 10:
             combatOnGoing = False
+
+print(f"Your final is score: {score}")
