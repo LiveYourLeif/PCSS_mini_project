@@ -7,7 +7,6 @@ import Lore
 
 level = 0  # Current level in the game is set to zero
 whoIsFighting = True
-gameOverState = 0
 playerHealth = ClassStats.health
 potionCount = 5
 score = 0
@@ -26,6 +25,13 @@ class battleSystem:
         return enemyList
 
     enemy = enemyGenerator(0)
+
+    def GameOver(self):
+        if playerHealth <= 0:
+            print("You have been laid in the grave")
+            gameOverState = True
+            combatOnGoing = False
+
 
     def battle(self):
         global whoIsFighting
