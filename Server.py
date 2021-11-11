@@ -1,4 +1,18 @@
 import socket
+import pickle
+#try:
+#    with open("saveData", "rb") as file:
+    #for items in file:
+
+#    score = pickle.load(file)
+#    print(score)
+#except:
+   # score = []
+
+#print(score)
+
+
+
 
 localIP = "127.0.0.1"
 
