@@ -21,12 +21,12 @@ def story(level):
               "You give the door a hard push, and as it slams open with a loud creak, you find yourself standing in front of a massive mausoleum.\n"
               "A single stone coffin lays atop a flight of steps.\n"
               "As you walk closer to investigate, the lid of the coffin bursts into the air, and lands right next to you.\n"
-              "With a roar that rumbles the entire mausoleum, a [MINIBOSS] crawls out of the coffin.\n")
+              "With a roar that rumbles the entire mausoleum, a monster crawls out of the coffin.\n")
     if level == 5:
         print("Miraculously, you’ve slain the beast.\n"
               "You take a moment to catch your breath, before you venture further into the mausoleum.\n"
               "At the back of the room, you spot a large door, with light shining through the cracks. You give it a push, and it creaks open.\n"
-              "Filled with hope of reaching the outside world again, you hurry through the opening, but what meets your eye isn’t the bright sky, but a fiery portal with a [ENEMY 6] crouched in front.\n"
+              "Filled with hope of reaching the outside world again, you hurry through the opening, but what meets your eye isn’t the bright sky, but a fiery portal with a beast crouched in front.\n"
               "You draw your weapon.\n")
     if level == 6:
         print("With your enemy dead by your feet, you enter the ominous portal.\n"
@@ -36,6 +36,7 @@ def story(level):
               "You realize that this is the kingdom threatening your own, and your purpose is clear:\n"
               "Find and eliminate the ruler of this realm.\n"
               "")
+
 
 def enemyTaunts(name):
     taunts = [f"The {name} slashes at you!",

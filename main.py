@@ -1,8 +1,8 @@
-import Encounters
+import Client
+
 
 def main():
-   play = Encounters.battleSystem()
-
+    Client
 
 if __name__ == "__main__":
     main()

@@ -1,5 +1,4 @@
 import random
-import Stats
 
 
 class EnemyType(): #Vi kan godt bare inherite constructoren fra ClassType, vi bruger de samme værdier anyways
@@ -15,15 +14,9 @@ class EnemyType(): #Vi kan godt bare inherite constructoren fra ClassType, vi br
                      "Werewolf"]
         return random.choice(enemyName)
 
-    def enemyHP(self):
-        hitPoints = Stats.HP()
-        hitPoints.set_HP(self.health)
-        return hitPoints.get_HP()
-
     def classStrength(self):
-        strength = Stats.Strength()
-        strength.set_strength(random.randint(self.strengthL, self.strengthU))
-        return strength.get_strength()
+        strength = random.randint(self.strengthL, self.strengthU)
+        return strength
 
 
 

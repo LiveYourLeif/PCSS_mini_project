@@ -1,5 +1,4 @@
 import random
-import Stats
 
 # Values som bliver ændret nede i constructoren for ClassType
 health = 50
@@ -19,11 +18,9 @@ class ClassType:
         self.magicU = mu
 
     def classStrength(self):
-        strength = Stats.Strength()
-        strength.set_strength(random.randint(self.strengthL, self.strengthU))
-        return strength.get_strength()
+        strength = random.randint(self.strengthL, self.strengthU)
+        return strength
 
     def classMagic(self):
-        magic = Stats.Magic()
-        magic.set_magic(random.randint(self.magicL, self.magicU))
-        return magic.get_magic()
+        magic = random.randint(self.magicL, self.magicU)
+        return magic
