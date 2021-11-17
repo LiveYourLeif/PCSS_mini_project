@@ -23,20 +23,36 @@ def story(level):
               "As you walk closer to investigate, the lid of the coffin bursts into the air, and lands right next to you.\n"
               "With a roar that rumbles the entire mausoleum, a monster crawls out of the coffin.\n")
     if level == 5:
-        print("Miraculously, you’ve slain the beast.\n"
-              "You take a moment to catch your breath, before you venture further into the mausoleum.\n"
-              "At the back of the room, you spot a large door, with light shining through the cracks. You give it a push, and it creaks open.\n"
-              "Filled with hope of reaching the outside world again, you hurry through the opening, but what meets your eye isn’t the bright sky, but a fiery portal with a beast crouched in front.\n"
-              "You draw your weapon.\n")
-    if level == 6:
         print("With your enemy dead by your feet, you enter the ominous portal.\n"
               "You find yourself in a land not unlike the world you know, however you can feel a disturbance in the air\n"
               "Goblins are running around you, with roll'n'eat kebabs in hand. You look to your right and spot an ominous sign\n"
               "Slagelse.\n"
               "You realize that this is the kingdom threatening your own, and your purpose is clear:\n"
-              "Find and eliminate the ruler of this realm.\n"
-              "")
+              "Find and eliminate the ruler of this realm.\n")
+    if level == 6:
+        print("As you wander, you suddenly notice a sharp stench.\n"
+              "You decide to follow the stench, and unsurprisingly, the denizens of this land do as well.\n")
+    if level == 7:
+        print("You venture further into the strange land, following the stench, and spot a house on the horizon.\n"
+              "As you approach the house, you see a sign.\n"
+              "Familien Rommel.\n"
+              "A beast is guarding the front door, and you brace yourself.\n")
 
+
+def bossStory(stage):
+    if stage == 1:
+        print("Miraculously, you’ve slain the beast.\n"
+            "You take a moment to catch your breath, before you venture further into the mausoleum.\n"
+            "At the back of the room, you spot a large door, with light shining through the cracks. You give it a push, and it creaks open.\n"
+            "Filled with hope of reaching the outside world again, you hurry through the opening, but what meets your eye isn’t the bright sky,\n"
+            " but a fiery portal with a beast crouched in front. You draw your weapon\n")
+    if stage == 2:
+        print("As you enter the Rommel residence, you spot him.\n"
+              "Tall and straight, he stands right in front of you, with a devilishly crooked smile\n"
+              "General Rommel\n"
+              "'I've been expecting you' he says, as he downs an Underberg\n"
+              "With the weight of your kingdom on your shoulders, you prepare for the fight of your life.\n"
+              "General Rommel does the same\n")
 
 def enemyTaunts(name):
     taunts = [f"The {name} slashes at you!",
