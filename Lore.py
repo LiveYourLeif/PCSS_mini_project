@@ -47,5 +47,4 @@ def enemyTaunts(name):
               f"The {name} uses a poison attack!",
               f"The {name} sucks out your life essence!",
               f"The {name} slaps your hands with a ruler!"]
-
     return taunts

@@ -1,23 +1,16 @@
-import fileinput
 import socket
 import Encounters
-import pickle
+
 
 playerScore = Encounters.score
-file = open("saveData", "wt")
+file = open("saveData.txt", "a")
 file.write(str(playerScore))
+file.write("\n")
 file.close()
-#data = []
-#data.append(playerScore)
-#pickle.dump(data, file)
-#file.close()
 
+score = f"{playerScore}"
 
-
-msgFromClient = "Hello UDP Server"
-
-
-bytesToSend = str.encode(msgFromClient)
+bytesToSend = str.encode(score)
 
 
 serverAddressPort = ("127.0.0.1", 20001)
@@ -34,7 +27,6 @@ UDPClientSocket.sendto(bytesToSend, serverAddressPort)
 
 
 msgFromServer = UDPClientSocket.recvfrom(bufferSize)
+msg = format(msgFromServer[0])
 
-msg = "Message from Server {}".format(msgFromServer[0])
-
-print(msg)
+print(msg[1:])

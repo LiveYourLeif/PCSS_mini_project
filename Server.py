@@ -1,28 +1,10 @@
 import socket
-import pickle
-#try:
-#    with open("saveData", "rb") as file:
-    #for items in file:
-
-#    score = pickle.load(file)
-#    print(score)
-#except:
-   # score = []
-
-#print(score)
-
-
-
 
 localIP = "127.0.0.1"
 
 localPort = 20001
 
 bufferSize = 1024
-
-msgFromServer = "Your Highscore: "
-
-bytesToSend = str.encode(msgFromServer)
 
 # Create a datagram socket
 
@@ -36,19 +18,25 @@ print("UDP server up and listening")
 
 # Listen for incoming datagrams
 
-while (True):
+while True:
+    try:
+        serverCommand = int(input())
+        if serverCommand == 0:
+            print("test")
+    except EOFError:
+        break
+
     bytesAddressPair = UDPServerSocket.recvfrom(bufferSize)
 
     message = bytesAddressPair[0]
 
     address = bytesAddressPair[1]
 
-    clientMsg = "Message from Client:{}".format(message)
-    clientIP = "Client IP Address:{}".format(address)
+    clientMsg = format(message)
+    print(clientMsg[2:-1])
 
-    print(clientMsg)
-    print(clientIP)
+    msgFromServer = f"Your Highscore: {clientMsg[2:-1]}"
 
+    bytesToSend = str.encode(msgFromServer)
     # Sending a reply to client
-
     UDPServerSocket.sendto(bytesToSend, address)

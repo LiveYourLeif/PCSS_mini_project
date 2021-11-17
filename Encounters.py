@@ -1,11 +1,13 @@
 import random
+import sys
+
 import ClassStats
 import Enemy
 import PlayerClass
 import Lore
 
 
-level = 0  # Current level in the game is set to zero
+level = 1
 whoIsFighting = True
 playerHealth = ClassStats.health
 potionCount = 5
@@ -17,13 +19,16 @@ class battleSystem:
         enemyList = []
         for i in range(10):
             newName = Enemy.EnemyType.className(self)
-            currentEnemy = Enemy.EnemyType(newName, (i * 5) + 10, (i * 2) + 1, (i * 2) + 3)
+            currentEnemy = Enemy.EnemyType(newName, (i * 5) + 10, (i * 2) + 1, (i * 2) + 2)
             enemyList.append(currentEnemy)
         return enemyList
 
     enemy = enemyGenerator(0)
 
     def normalBattle(self):
+        global enemyName
+        global enemyStrength
+        global enemyHP
         newEnemy = battleSystem.enemy.pop(0)
         enemyName = newEnemy.className()
         enemyStrength = newEnemy.classStrength()
@@ -34,13 +39,21 @@ class battleSystem:
         return enemyName, enemyStrength, enemyHP
 
     def bossBattle(self):
+        global minibossName
+        global minibossStrength
+        global minibossHP
         miniboss = Enemy.EnemyType("Breitthøvd", 50, 10, 15)
         minibossName = miniboss.name
         minibossStrength = random.randint(miniboss.strengthL, miniboss.strengthU)
-        minibossHealth = miniboss.health
+        minibossHP = miniboss.health
         print(f"A giant {minibossName} appears in front of you!")
 
-    def battle(self, enemyName, enemyStrength, enemyHP):
+    def potionReplenish(self):
+            print("Your Underberg stock is replenished!")
+            potionCount = 5
+            print(f"Underbergs remaining in your pocket: {potionCount}/5.\n")
+
+    def battle(enemyName, enemyStrength, enemyHP):
         global whoIsFighting
         global combatOnGoing
         global playerHealth
@@ -118,9 +131,13 @@ class battleSystem:
                         if potionCount > 0:
                             print(f"You reach for an Underberg in your pocket.")
                             potionCount -= 1
-                            playerHealth += 20
-                            if playerHealth > 50:
-                                playerHealth = 50  # Sets the player health to maximum hp possible
+                            playerHealth += 30
+                            if level < 4:
+                                if playerHealth > 50:
+                                    playerHealth = 50
+                            else:
+                                if playerHealth > 100:
+                                    playerHealth = 100
                             print(f"You drink the Underberg and restore 20 health. You are reinvigorated.")
                             print(f"Underbergs remaining in your pocket: {potionCount}/5.\n")
                             whoIsFighting = False
@@ -128,15 +145,27 @@ class battleSystem:
                         else:
                             print(f"You are out of Underberg!\n")
 
+
                     if playerAction == 4:
                         print(f"Your stats: {playerHealth} Health | {potionCount} potions remaining\n"
                               f"{enemyName} stats: {enemyHP} Health\n")
 
+
                     if enemyHP <= 0:
-                        print(f"{enemyName} has fallen to your powers\n")
-                        playerHealth += 30
-                        if playerHealth > 50:
-                            playerHealth = 50
+                        if enemyName == "Breitthøvd":
+                            print("\nYou defeated the Breitthøvd and absorb its powers!")
+                            playerHealth = 100
+                            print(f"Your max health is now: {playerHealth}\n")
+                        else:
+                            print(f"{enemyName} has fallen to your powers\n")
+                            playerHealth += 30
+
+                        if level < 4:
+                            if playerHealth > 50:
+                                playerHealth = 50
+                        else:
+                            if playerHealth > 100:
+                                playerHealth = 100
                         print(f"You regain some of your energy!\n"
                               f"Player health: {playerHealth}\n")
                         whoIsFighting = True
@@ -153,24 +182,32 @@ class battleSystem:
                     print(f"{PlayerClass.Player.playerName} has been laid to rest.")
                     whoIsFighting = True
                     combatOnGoing = False
-                    break
+                    sys.exit()
 
         return score
 
 
-for i in range(10):
+for i in range(5):
     combatOnGoing = True
     while combatOnGoing:
+        level = i
+        print(f"LEVEL: {level}")
         if playerHealth > 0:
-            Lore.story(i)
-            normal = battleSystem.normalBattle(i)
-            boss = battleSystem.bossBattle(i)
-            battleSystem.battle()
-            if i == 4:
-                battleSystem.battle(boss, boss, boss)
-            if i >= 9:
-                combatOnGoing = False
-                print(f"Your final score is: {score}")
-        else:
-            break
+            if i < 4 or i > 4:
+                Lore.story(i)
+                battleSystem.normalBattle(i)
+                battleSystem.battle(enemyName, enemyStrength, enemyHP)
 
+        if i == 4:
+            Lore.bossStory(1)
+            battleSystem.bossBattle(i)
+            battleSystem.battle(minibossName, minibossStrength, minibossHP)
+
+        if i == 7:
+            battleSystem.potionReplenish(0)
+
+
+if level == 5:
+    combatOnGoing = False
+    print(f"Your final score is: {score}")
+    sys.exit()
