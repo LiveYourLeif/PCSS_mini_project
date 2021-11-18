@@ -1,9 +1,10 @@
-import random
 
 
 class General_algorithm():
-    dataBubble = [3, 8, 7, 5, 1, 9, 2, 4, 6]
-    dataQuick = [3, 8, 7, 5, 1, 9, 2, 4, 6]
+    file = open("saveData.txt", "r")
+    value = file.read().splitlines()
+    file.close()
+
     counter = 0
 
     def count(self):
@@ -13,8 +14,7 @@ class General_algorithm():
 class Bubble_Sort(General_algorithm):
 
     def sort(self, inp):
-        self.dataBubble = inp
-        print(f"Array to be sorted: {inp}")
+        self.value = inp
         for y in inp:
             test = True
             for x in range(len(inp)):
@@ -27,6 +27,3 @@ class Bubble_Sort(General_algorithm):
             if test == True:
                 break
             self.count()
-            print(f"Sorting nr. {self.counter}: {inp}")
-
-    def quicksort = ():

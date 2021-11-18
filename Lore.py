@@ -1,6 +1,8 @@
 def story(level):
     if level == 0:
-        print("Your task is to defeat the legendary enemy who is threatening the kingdom.\n"
+        print("Your task is to defeat the legendary enemy who is threatening the kingdom, with as few actions as possible.\n"
+              "An action is every attack you do and every potion you drink.\n"
+              " To defeat the game, you have to defeat 10 powerful enemies.\n"
               f"You wander into the wilderness. You hear a rumbling in the bushes, before an enemy appears in front of you!\n")
     if level == 1:
         print("The first beast of your adventure is slain, and you traverse further into the dreadful woods.\n"

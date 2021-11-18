@@ -187,7 +187,7 @@ class battleSystem:
         return score
 
 
-for i in range(5):
+for i in range(10):
     combatOnGoing = True
     while combatOnGoing:
         level = i
@@ -207,7 +207,7 @@ for i in range(5):
             battleSystem.potionReplenish(0)
 
 
-if level == 5:
+if level == 10:
     combatOnGoing = False
     print(f"Your final score is: {score}")
     sys.exit()
