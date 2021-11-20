@@ -1,18 +1,37 @@
 import random
 import sys
-
+import threading
 import ClassStats
 import Enemy
 import PlayerClass
 import Lore
+import queue
+import time
 
 
 level = 1
 whoIsFighting = True
+minibossDefeated = False
 playerHealth = ClassStats.health
 potionCount = 5
 score = 0
 
+def func(id, result_queue):
+    time.sleep(0.1)
+    result_queue.put(id)
+
+def threadPicker():
+    q = queue.Queue()
+    threads = [threading.Thread(target=func, args=(i, q)) for i in range(6)]
+    for th in threads:
+        th.daemon = True
+        th.start()
+
+    result = q.get()
+    if result >= 2:
+        battleSystem.potionReplenish(0)
+    else:
+        battleSystem.maxHalthIncrease(0)
 
 class battleSystem:
     def enemyGenerator(self):
@@ -24,6 +43,17 @@ class battleSystem:
         return enemyList
 
     enemy = enemyGenerator(0)
+
+    def potionReplenish(self):
+        global potionCount
+        print("You find Underbergs, your stock is replenished!")
+        potionCount = 5
+        print(f"Underbergs remaining in your pocket: {potionCount}/5.\n")
+
+    def maxHalthIncrease(self):
+        print("You find a health increase potion! ")
+        playerHealth = 150
+        print(f"Your max health is now: {playerHealth}\n")
 
     def normalBattle(self):
         global enemyName
@@ -38,7 +68,7 @@ class battleSystem:
         # Battle between the player and the enemy mob
         return enemyName, enemyStrength, enemyHP
 
-    def bossBattle(self):
+    def minibossBattle(self):
         global minibossName
         global minibossStrength
         global minibossHP
@@ -48,10 +78,15 @@ class battleSystem:
         minibossHP = miniboss.health
         print(f"A giant {minibossName} appears in front of you!")
 
-    def potionReplenish(self):
-            print("Your Underberg stock is replenished!")
-            potionCount = 5
-            print(f"Underbergs remaining in your pocket: {potionCount}/5.\n")
+    def finalbossBattle(self):
+        global finalbossName
+        global finalbossStrength
+        global finalbossHP
+        finalboss = Enemy.EnemyType("General Rommel", 75, 16, 18)
+        finalbossName = finalboss.name
+        finalbossStrength = random.randint(finalboss.strengthL, finalboss.strengthU)
+        finalbossHP = finalboss.health
+        print(f"The devious {finalbossName} rises in front of you!")
 
     def battle(enemyName, enemyStrength, enemyHP):
         global whoIsFighting
@@ -59,38 +94,47 @@ class battleSystem:
         global playerHealth
         global potionCount
         global score
+        global minibossDefeated
+        strengthIncrease = 2
 
         while combatOnGoing:
             while enemyHP > 0 and whoIsFighting:
                     playerAction = int(input(f"It is your turn! What do you want to do?\n"
                                              "Melee = 1 | Magic = 2 | Heal = 3 | Stats = 4 \n"))
 
+
                     if playerAction == 1:
                         if PlayerClass.Player.playerChoice == 1:
-                            currentStrength = PlayerClass.Player.warrior.classStrength() # Varible to set the current strength of the enemy
+                            warriorStrength = PlayerClass.Player.warrior.classStrength()
+                            if minibossDefeated:
+                                warriorStrength += strengthIncrease
                             print(f"You swing at the {enemyName} with your sword!")
-                            print(f"You dealt {currentStrength} damage to the {enemyName}")
-                            enemyHP = enemyHP - currentStrength
+                            print(f"You dealt {warriorStrength} damage to the {enemyName}")
+                            enemyHP = enemyHP - warriorStrength
                             if enemyHP > 0:
                                 print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
                             score += 1
 
                         if PlayerClass.Player.playerChoice == 2:
-                            currentStrength = PlayerClass.Player.mage.classStrength()
+                            mageStrength = PlayerClass.Player.mage.classStrength()
+                            if minibossDefeated:
+                                mageStrength += strengthIncrease
                             print(f"You slap the {enemyName} with the back of your hand!")
-                            print(f"You dealt {currentStrength} damage to the {enemyName}")
-                            enemyHP = enemyHP - currentStrength
+                            print(f"You dealt {mageStrength} damage to the {enemyName}")
+                            enemyHP = enemyHP - mageStrength
                             if enemyHP > 0:
                                 print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
                             score += 1
 
                         if PlayerClass.Player.playerChoice == 3:
-                            currentStrength = PlayerClass.Player.wildcard.classStrength()
+                            wildcardStrength = PlayerClass.Player.wildcard.classStrength()
+                            if minibossDefeated:
+                                wildcardStrength += strengthIncrease
                             print(f"You roundhouse kick the {enemyName} in the throat!")
-                            print(f"You dealt {currentStrength} damage to the {enemyName}")
-                            enemyHP = enemyHP - currentStrength
+                            print(f"You dealt {wildcardStrength} damage to the {enemyName}")
+                            enemyHP = enemyHP - wildcardStrength
                             if enemyHP > 0:
                                 print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
@@ -98,30 +142,36 @@ class battleSystem:
 
                     if playerAction == 2:
                         if PlayerClass.Player.playerChoice == 1:
-                            currentMagic = PlayerClass.Player.warrior.classMagic()
+                            warriorMagic = PlayerClass.Player.warrior.classMagic()
+                            if minibossDefeated:
+                                warriorMagic += strengthIncrease
                             print(f"You try to cast a fireball, but only tickle the {enemyName} with sparks!")
-                            print(f"You dealt {currentMagic} damage to the {enemyName}")
-                            enemyHP = enemyHP - currentMagic
+                            print(f"You dealt {warriorMagic} damage to the {enemyName}")
+                            enemyHP = enemyHP - warriorMagic
                             if enemyHP > 0:
                                 print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
                             score += 1
 
                         if PlayerClass.Player.playerChoice == 2:
-                            currentMagic = PlayerClass.Player.mage.classMagic()
+                            mageMagic = PlayerClass.Player.mage.classMagic()
+                            if minibossDefeated:
+                                mageMagic += strengthIncrease
                             print(f"You use a powerful magic attack on the {enemyName}!")
-                            print(f"You dealt {currentMagic} damage to the {enemyName}")
-                            enemyHP = enemyHP - currentMagic
+                            print(f"You dealt {mageMagic} damage to the {enemyName}")
+                            enemyHP = enemyHP - mageMagic
                             if enemyHP > 0:
                                 print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
                             score += 1
 
                         if PlayerClass.Player.playerChoice == 3:
-                            currentMagic = PlayerClass.Player.wildcard.classMagic()
+                            wildcardMagic = PlayerClass.Player.wildcard.classMagic()
+                            if minibossDefeated:
+                                wildcardMagic += strengthIncrease
                             print(f"You cast a magic spell on the {enemyName}!")
-                            print(f"You dealt {currentMagic} damage to the {enemyName}")
-                            enemyHP = enemyHP - currentMagic
+                            print(f"You dealt {wildcardMagic} damage to the {enemyName}")
+                            enemyHP = enemyHP - wildcardMagic
                             if enemyHP > 0:
                                 print(f"{enemyName} health: {enemyHP} \n")
                             whoIsFighting = False
@@ -135,10 +185,10 @@ class battleSystem:
                             if level < 4:
                                 if playerHealth > 50:
                                     playerHealth = 50
-                            else:
+                            elif 4 < level < 9:
                                 if playerHealth > 100:
                                     playerHealth = 100
-                            print(f"You drink the Underberg and restore 20 health. You are reinvigorated.")
+                            print(f"You drink the Underberg and restore 30 health. You are reinvigorated.")
                             print(f"Underbergs remaining in your pocket: {potionCount}/5.\n")
                             whoIsFighting = False
                             score += 1
@@ -155,7 +205,7 @@ class battleSystem:
                         if enemyName == "Breitthøvd":
                             print("\nYou defeated the Breitthøvd and absorb its powers!")
                             playerHealth = 100
-                            print(f"Your max health is now: {playerHealth}\n")
+                            print(f"Your max health is now: {playerHealth} and your powers have increased by two!\n")
                         else:
                             print(f"{enemyName} has fallen to your powers\n")
                             playerHealth += 30
@@ -163,11 +213,13 @@ class battleSystem:
                         if level < 4:
                             if playerHealth > 50:
                                 playerHealth = 50
-                        else:
+                            print(f"You regain some of your energy!\n"
+                                  f"Player health: {playerHealth}\n")
+                        elif 4 < level < 9:
                             if playerHealth > 100:
                                 playerHealth = 100
-                        print(f"You regain some of your energy!\n"
-                              f"Player health: {playerHealth}\n")
+                            print(f"You regain some of your energy!\n"
+                                  f"Player health: {playerHealth}\n")
                         whoIsFighting = True
                         combatOnGoing = False
 
@@ -183,31 +235,41 @@ class battleSystem:
                     whoIsFighting = True
                     combatOnGoing = False
                     sys.exit()
-
         return score
+
 
 
 for i in range(10):
     combatOnGoing = True
     while combatOnGoing:
         level = i
-        print(f"LEVEL: {level}")
+        print(f"LEVEL: {level+1}")
         if playerHealth > 0:
-            if i < 4 or i > 4:
+            if i < 4:
                 Lore.story(i)
                 battleSystem.normalBattle(i)
                 battleSystem.battle(enemyName, enemyStrength, enemyHP)
 
-        if i == 4:
-            Lore.bossStory(1)
-            battleSystem.bossBattle(i)
-            battleSystem.battle(minibossName, minibossStrength, minibossHP)
+            if i == 4:
+                Lore.bossStory(1)
+                battleSystem.minibossBattle(i)
+                battleSystem.battle(minibossName, minibossStrength, minibossHP)
 
-        if i == 7:
-            battleSystem.potionReplenish(0)
+            if 4 < i < 9:
+                minibossDefeated = True
+                Lore.story(i)
+                battleSystem.normalBattle(i)
+                battleSystem.battle(enemyName, enemyStrength, enemyHP)
+
+            if i == 7:
+                threadPicker()
+
+            if i == 9:
+                Lore.bossStory(2)
+                battleSystem.finalbossBattle(i)
+                battleSystem.battle(finalbossName, finalbossStrength, finalbossHP)
 
 
 if level == 10:
     combatOnGoing = False
-    print(f"Your final score is: {score}")
     sys.exit()

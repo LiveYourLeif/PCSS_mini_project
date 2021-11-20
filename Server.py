@@ -1,5 +1,5 @@
 import socket
-import  Sorting
+import Sorting
 
 localIP = "127.0.0.1"
 
@@ -16,7 +16,6 @@ UDPServerSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
 UDPServerSocket.bind((localIP, localPort))
 
 print("UDP server up and listening")
-
 
 # Listen for incoming datagrams
 
