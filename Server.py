@@ -27,7 +27,7 @@ while True:
     address = bytesAddressPair[1]
 
     clientMsg = format(message)
-    print(f"Score recieved!")
+    print(f"Score received!")
 
     file = open("saveData.txt", "a")
     file.write(str(clientMsg[2:-1]))
