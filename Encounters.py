@@ -12,6 +12,7 @@ import time
 level = 1
 whoIsFighting = True
 minibossDefeated = False
+healthIncrease = False
 playerHealth = ClassStats.health
 potionCount = 5
 score = 0
@@ -21,6 +22,7 @@ def func(id, result_queue):
     result_queue.put(id)
 
 def threadPicker():
+    global healthIncrease
     q = queue.Queue()
     threads = [threading.Thread(target=func, args=(i, q)) for i in range(6)]
     for th in threads:
@@ -28,10 +30,11 @@ def threadPicker():
         th.start()
 
     result = q.get()
-    if result >= 2:
+    if result > 2:
         battleSystem.potionReplenish(0)
     else:
         battleSystem.maxHalthIncrease(0)
+        healthIncrease = True
 
 class battleSystem:
     def enemyGenerator(self):
@@ -51,6 +54,7 @@ class battleSystem:
         print(f"Underbergs remaining in your pocket: {potionCount}/5.\n")
 
     def maxHalthIncrease(self):
+        global playerHealth
         print("You find a health increase potion! ")
         playerHealth = 150
         print(f"Your max health is now: {playerHealth}\n")
@@ -91,8 +95,8 @@ class battleSystem:
     def battle(enemyName, enemyStrength, enemyHP):
         global whoIsFighting
         global combatOnGoing
-        global playerHealth
         global potionCount
+        global playerHealth
         global score
         global minibossDefeated
         strengthIncrease = 2
@@ -195,17 +199,15 @@ class battleSystem:
                         else:
                             print(f"You are out of Underberg!\n")
 
-
                     if playerAction == 4:
                         print(f"Your stats: {playerHealth} Health | {potionCount} potions remaining\n"
                               f"{enemyName} stats: {enemyHP} Health\n")
-
 
                     if enemyHP <= 0:
                         if enemyName == "Breitthøvd":
                             print("\nYou defeated the Breitthøvd and absorb its powers!")
                             playerHealth = 100
-                            print(f"Your max health is now: {playerHealth} and your powers have increased by two!\n")
+                            print(f"Your max health is now: {playerHealth} and your max strength has increased by 2!\n")
                         else:
                             print(f"{enemyName} has fallen to your powers\n")
                             playerHealth += 30
@@ -216,8 +218,12 @@ class battleSystem:
                             print(f"You regain some of your energy!\n"
                                   f"Player health: {playerHealth}\n")
                         elif 4 < level < 9:
-                            if playerHealth > 100:
-                                playerHealth = 100
+                            if not healthIncrease:
+                                if playerHealth > 100:
+                                    playerHealth = 100
+                            else:
+                                if playerHealth > 150:
+                                    playerHealth = 150
                             print(f"You regain some of your energy!\n"
                                   f"Player health: {playerHealth}\n")
                         whoIsFighting = True

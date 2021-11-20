@@ -6,7 +6,7 @@ def story(level):
               f"You wander into the wilderness. You hear a rumbling in the bushes, before an enemy appears in front of you!\n")
     if level == 1:
         print("The first beast of your adventure is slain, and you traverse further into the dreadful woods.\n"
-              "Behind some trees, you spot a cave entrance, with something guarding it. You approach\n.")
+              "Behind some trees, you spot a cave entrance, with something guarding it. You approach.\n")
     if level == 2:
         print("Your dead enemy is left bleeding in the mud, as you push it aside to enter the cave. \n"
               "Dark and mysterious, the cave sends shivers down your spine. \n"
